@@ -79,55 +79,43 @@ console.log(arr);
 
 ```js
 // 归并排序算法
-function mergeSort(array) {
-  // 避免污染传入的数组
-  const temp = [...array];
-  splitArray(temp, 0, array.length - 1);
-  return temp;
-}
-
-// 将大数组拆分成两个小数组
-function splitArray(array, start, end) {
-  if (start < end) {
-    const mid = Math.floor((start + end) / 2);
-    splitArray(array, 0, mid);
-    splitArray(array, mid + 1, end);
-    mergeArray(array, start, mid, end);
-  }
-}
-
-// 合并两个排序好的数组
-function mergeArray(array, start, mid, end) {
-  var i = start;
-  var j = mid + 1;
-  var k = 0;
-  var temp = [];
-  while (i <= mid && j <= end) {
-    if (array[i] <= array[j]) {
-      temp[k] = array[i];
-      i++;
-    } else {
-      temp[k] = array[j];
-      j++;
+function mergeSort(arr){
+    if(arr.length <= 1) {
+        return arr;
     }
-    k++;
-  }
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+    return merge(mergeSort(left), mergeSort(right));
+}
 
-  while (i <= mid) {
-    temp[k] = array[i];
-    i++;
-    k++;
-  }
+// 合并两个有序数组
+function merge(left, right) {
+    let result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
 
-  while (j <= end) {
-    temp[k] = array[j];
-    j++;
-    k++;
-  }
+    while(leftIndex<left.length && rightIndex<right.length) {
+        if(left[leftIndex] <= right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        }else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
 
-  for (let index = 0; index < k; index++) {
-    array[index + start] = temp[index];
-  }
+    while(leftIndex < left.length) {
+        result.push(left[leftIndex]);
+        leftIndex++;
+    }
+
+    while(rightIndex < right.length) {
+        result.push(right[rightIndex]);
+        rightIndex++;
+    }
+
+    return result;
 }
 var arr = [2, 3, 7, 9, 8, 5, 4, 6, 1];
 console.log("原始数组：", arr);
