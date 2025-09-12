@@ -8,7 +8,7 @@
     "lint:fix": "lint-md ./docs --fix",
     "dev": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress dev docs",
     "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress build docs",
-    "commit": "npx git-cz"
+    "commit": "npm run lint && npx git-cz"
   },
   "husky": {
     "hooks": {
