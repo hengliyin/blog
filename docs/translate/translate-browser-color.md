@@ -24,7 +24,7 @@ body {
 }
 ```
 
-![image-20200619092016781](https://cdn.yinhengli.com/image-20200619092016781.png)
+![image-20200619092016781](https://github.hengli.xyz/image-20200619092016781.png)
 
 我们看到的整个页面背景都是黄色，肯定有同学会认为：这是由于 body 填充了整个视图窗口。
 
@@ -37,7 +37,7 @@ body {
 }
 ```
 
-![image-20200619092049570](https://cdn.yinhengli.com/image-20200619092049570.png)
+![image-20200619092049570](https://github.hengli.xyz/image-20200619092049570.png)
 
 您可以看到，其实 body 只包裹了 Hello World 内容区域。
 
@@ -95,7 +95,7 @@ body {
 
 现在页面的颜色是什么？是黄色还是绿色？还是两者都有？
 
-![image-20200619092123439](https://cdn.yinhengli.com/image-20200619092123439.png)
+![image-20200619092123439](https://github.hengli.xyz/image-20200619092123439.png)
 
 答案是：两者都有。
 
@@ -108,7 +108,7 @@ body {
 
 让我们给 html 元素添加边框，看看会发生什么:
 
-![image-20200619092151820](https://cdn.yinhengli.com/image-20200619092151820.png)
+![image-20200619092151820](https://github.hengli.xyz/image-20200619092151820.png)
 
 所以实际上，html 的行为就像 body 一样：它的大小也是根据页面内容动态渲染的。
 
@@ -158,7 +158,7 @@ h1 {
 
 between（绿色 + 白色）= 粉红色，所以希望我们的标题是粉红色。
 
-![image-20200619092216000](https://cdn.yinhengli.com/image-20200619092216000.png)
+![image-20200619092216000](https://github.hengli.xyz/image-20200619092216000.png)
 
 但事实证明，它**不是**粉红色的。
 
@@ -186,7 +186,7 @@ body {
 
 它现在起作用了！
 
-![image-20200619092247864](https://cdn.yinhengli.com/image-20200619092247864.png)
+![image-20200619092247864](https://github.hengli.xyz/image-20200619092247864.png)
 
 让我们再来理一理:
 
@@ -237,7 +237,7 @@ body {
 
 我们的页面是这样的:
 
-![image-20200619092457997](https://cdn.yinhengli.com/image-20200619092457997.png)
+![image-20200619092457997](https://github.hengli.xyz/image-20200619092457997.png)
 
 让我们用 iframe 标签把这个页面包含在另一个页面中:
 
@@ -247,7 +247,7 @@ body {
 
 以下是我们得到的结果:
 
-![image-20200619092517445](https://cdn.yinhengli.com/image-20200619092517445.png)
+![image-20200619092517445](https://github.hengli.xyz/image-20200619092517445.png)
 
 所以，问题是: iframe 是有一个透明的还是白色的 canvas？
 
@@ -259,7 +259,7 @@ body {
 }
 ```
 
-![image-20200619091815769](https://cdn.yinhengli.com/image-20200619091815769.png)
+![image-20200619091815769](https://github.hengli.xyz/image-20200619091815769.png)
 
 如您所见，**iframe 的 canvas 是透明的**，我们可以透过它看到父页面。
 
@@ -275,7 +275,7 @@ body {
 
 以下是我们得到的结果:
 
-![image-20200619091841730](https://cdn.yinhengli.com/image-20200619091841730.png)
+![image-20200619091841730](https://github.hengli.xyz/image-20200619091841730.png)
 
 如果 iframe 没有 canvas，那么它 body 外部的区域就不会被填充。 但是由于 canvas 机制，body 的背景颜色可以用来覆盖整个 iframe 视区。
 
@@ -308,4 +308,4 @@ body {
 
 最后，如果你对此有任何想法，欢迎留言评论！
 
-![前端日志](https://cdn.yinhengli.com/qianduanrizhi.png)
+![前端日志](https://github.hengli.xyz/qianduanrizhi.png)

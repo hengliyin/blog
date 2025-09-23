@@ -4,7 +4,7 @@
 
 本文主要分析 Vue 从 Data 更新，到通知 Watcher 异步更新视图的流程，也就是下图中的橙色部分。
 
-![](https://cdn.yinhengli.com/image-20200816153633209.png)
+![](https://github.hengli.xyz/image-20200816153633209.png)
 
 我们先来回顾一下图中的几个对象：
 
@@ -100,7 +100,7 @@ function flushSchedulerQueue() {
 
 根据上面的代码，我们可以得出这样一个流程图：
 
-![](https://cdn.yinhengli.com/image-20200816114823688.png)
+![](https://github.hengli.xyz/image-20200816114823688.png)
 
 图中可以看到，Vue 在调用 Watcher 更新视图时，并不会直接进行更新，而是把需要更新的 Watcher 加入到 Queue 队列里，然后把具体的更新方法 flushSchedulerQueue 传给 nextTick 进行调用。
 
@@ -172,7 +172,7 @@ function flushCallbacks() {
 
 分析到这里，我们就可以得到一张整体的流程图了。
 
-![](https://cdn.yinhengli.com/image-20200816152809303.png)
+![](https://github.hengli.xyz/image-20200816152809303.png)
 
 接下来，我们来完善一些判断逻辑。
 
@@ -183,7 +183,7 @@ function flushCallbacks() {
 
 结合以上判断，最终的流程图如下：
 
-![](https://cdn.yinhengli.com/image-20200816153911974.png)
+![](https://github.hengli.xyz/image-20200816153911974.png)
 
 最后，我们分析一下，为什么 `this.$nextTick` 能够获取更新后的 DOM？
 
@@ -222,4 +222,4 @@ setTimeout(() => {
 
 最后，如果你对此有任何想法，欢迎留言评论！
 
-![](https://cdn.yinhengli.com/shequ-fenxiang.png)
+![](https://github.hengli.xyz/shequ-fenxiang.png)

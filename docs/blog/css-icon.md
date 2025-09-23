@@ -126,7 +126,7 @@ Base64 图指的是，将一张图片数据编码成一串字符串，并使用�
 
 Ok，我们来总结一下传统图片画图标的几种方式：
 
-![](https://cdn.yinhengli.com/image-20200823163554849.png)
+![](https://github.hengli.xyz/image-20200823163554849.png)
 
 最后剩下动态修改图片颜色的问题，这个就比较难控制了，可以用 CSS Filter 去做滤镜，通过调整图片的模糊度、对比度、灰度、透明度等，间接地改变图片颜色。
 
@@ -356,7 +356,7 @@ SVG 采用 XML 格式的语法来画图，例如：
 
 可以看到，SVG 和 HTML 一样具有树形结构，结构中的 path 都是图形中的一个区域，这些区域可以被 CSS 选择器匹配到。当我们匹配到对应的区域时，就能进行对应的颜色修改了，一张多色的 SVG 图也就做好了。[案例](https://codepen.io/sarahdayan/pen/GOzaEQ)
 
-![](https://cdn.yinhengli.com/image-20200826222025988.png)
+![](https://github.hengli.xyz/image-20200826222025988.png)
 
 总结一下 SVG 图标的特点：
 
@@ -374,4 +374,4 @@ SVG 采用 XML 格式的语法来画图，例如：
 
 总体来说，3 种图标使用起来都很简单，而 SVG 图标则是一个大趋势，我们可以视具体情况来做选择。
 
-![](https://cdn.yinhengli.com/qianduanrizhi_guanzhu.png)
+![](https://github.hengli.xyz/qianduanrizhi_guanzhu.png)

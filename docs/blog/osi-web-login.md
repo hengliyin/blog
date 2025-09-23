@@ -27,7 +27,7 @@ Cookie + Session 的登录方式是最经典的一种登录方式，现在仍然
 
 用户首次登录时：
 
-![](https://cdn.yinhengli.com/image-20200702094538842.png)
+![](https://github.hengli.xyz/image-20200702094538842.png)
 
 1. 用户访问 `a.com/pageA`，并输入密码登录。
 2. 服务器验证密码无误后，会创建 SessionId，并将它保存起来。
@@ -37,7 +37,7 @@ Cookie + Session 的登录方式是最经典的一种登录方式，现在仍然
 
 第一次登录完成之后，后续的访问就可以直接使用 Cookie 进行身份验证了：
 
-![](https://cdn.yinhengli.com/image-20200702094559241.png)
+![](https://github.hengli.xyz/image-20200702094559241.png)
 
 1. 用户访问 `a.com/pageB` 页面时，会自动带上第一次登录时写入的 Cookie。
 2. 服务器端比对 Cookie 中的 SessionId 和保存在服务器端的 SessionId 是否一致。
@@ -61,7 +61,7 @@ Cookie + Session 的登录方式是最经典的一种登录方式，现在仍然
 
 用户首次登录时：
 
-![](https://cdn.yinhengli.com/image-20200702095140936.png)
+![](https://github.hengli.xyz/image-20200702095140936.png)
 
 1. 用户输入账号密码，并点击登录。
 2. 服务器端验证账号密码无误，创建 Token。
@@ -69,7 +69,7 @@ Cookie + Session 的登录方式是最经典的一种登录方式，现在仍然
 
 后续页面访问时：
 
-![](https://cdn.yinhengli.com/image-20200702095402558.png)
+![](https://github.hengli.xyz/image-20200702095402558.png)
 
 1. 用户访问 `a.com/pageB` 时，带上第一次登录时获取的 Token。
 2. 服务器端验证 Token ，有效则身份验证成功。
@@ -227,4 +227,4 @@ if (new Date() - payload.iat < "token 有效期") {
 - SSO 单点登录，适用于中大型企业，想要统一内部所有产品的登录方式。
 - OAuth 第三方登录，简单易用，对用户和开发者都友好，但第三方平台很多，需要选择合适自己的第三方登录平台。
 
-![](https://cdn.yinhengli.com/qianduanrizhi_guanzhu.png)
+![](https://github.hengli.xyz/qianduanrizhi_guanzhu.png)

@@ -342,4 +342,4 @@ var youngest = _.chain(users)
 
 最后，如果你对此有任何想法，欢迎留言评论！
 
-![](https://cdn.yinhengli.com/qianduanrizhi_guanzhu.png)
+![](https://github.hengli.xyz/qianduanrizhi_guanzhu.png)

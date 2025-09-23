@@ -188,11 +188,11 @@ Js 代码在执行时，会被 V8 引擎解析，这时 V8 会用不同的模板
 - [FunctionTemplate](https://v8docs.nodesource.com/node-0.10/d8/d83/classv8_1_1_function_template.html) 用来创建函数
 - [PrototypeTemplate](https://v8docs.nodesource.com/node-0.10/d8/d83/classv8_1_1_function_template.html#ad7af75668b4eb793dcf3d80341eeb296) 用来创建函数原型
 
-![](https://cdn.yinhengli.com/image-20200707191559701.png)
+![](https://github.hengli.xyz/image-20200707191559701.png)
 
-![](https://cdn.yinhengli.com/image-20200707191709673.png)
+![](https://github.hengli.xyz/image-20200707191709673.png)
 
-![](https://cdn.yinhengli.com/image-20200707191819115.png)
+![](https://github.hengli.xyz/image-20200707191819115.png)
 
 细品一下 V8 中的定义，我们可以得到以下结论。
 
@@ -211,7 +211,7 @@ Js 代码在执行时，会被 V8 引擎解析，这时 V8 会用不同的模板
 
 下图展示了所有的内置构造函数，他们的原型都是 Function.prototype。
 
-![](https://cdn.yinhengli.com/image-20200709114139808.png)
+![](https://github.hengli.xyz/image-20200709114139808.png)
 
 看到这里，你是否也可以一看就看出任何对象的原型呢？
 
@@ -264,4 +264,4 @@ V8 中的整体执行流程是符合正常预期的，这里了解一下即可�
 
 最后，如果你对此有任何想法，欢迎留言评论！
 
-![](https://cdn.yinhengli.com/qianduanrizhi_guanzhu.png)
+![](https://github.hengli.xyz/qianduanrizhi_guanzhu.png)

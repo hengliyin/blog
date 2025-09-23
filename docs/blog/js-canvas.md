@@ -2,7 +2,7 @@
 
 今天来实现一个图片碎片化加载效果，效果如下：
 
-![loading](https://cdn.yinhengli.com/img-loading.gif)
+![loading](https://github.hengli.xyz/img-loading.gif)
 
 我们分为 3 个步骤来实现：
 
@@ -33,7 +33,7 @@
 
 ```js
 let image = new Image();
-image.src = "https://cdn.yinhengli.com/canvas-example.jpeg";
+image.src = "https://github.hengli.xyz/canvas-example.jpeg";
 let boxWidth, boxHeight;
 // 拆分成 10 行，10 列
 let rows = 10,
@@ -100,7 +100,7 @@ function animate() {
     ></canvas>
     <script>
       let image = new Image();
-      image.src = "https://cdn.yinhengli.com/canvas-example.jpeg";
+      image.src = "https://github.hengli.xyz/canvas-example.jpeg";
       let canvas = document.getElementById("myCanvas");
       let context = canvas.getContext("2d");
       let boxWidth, boxHeight;
@@ -144,4 +144,4 @@ function animate() {
 
 通过这个 Demo，我们使用了 canvasAPI 实现了图片的碎片加载效果，是不是特别简单！
 
-![前端日志](https://cdn.yinhengli.com/qianduanrizhi.png)
+![前端日志](https://github.hengli.xyz/qianduanrizhi.png)

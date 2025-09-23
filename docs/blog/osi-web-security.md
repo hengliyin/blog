@@ -95,7 +95,7 @@ Web 安全是互联网中不可或缺的一个领域，这个领域中诞生了�
 
 XSS 攻击的本质是将用户数据当成了 HTML 代码一部分来执行，从而混淆原本的语义，产生新的语义。
 
-![](https://cdn.yinhengli.com/image-20200726164324964.png)
+![](https://github.hengli.xyz/image-20200726164324964.png)
 
 如图所示，我们注册了一个 `<script>alert(document.cookie)</script>` 的用户名，所有能看到此用户名字的页面，都会弹出当前浏览器的 Cookie，如果代码的逻辑是将 Cookie 发送到攻击者的网站，攻击者就能冒充当前用户进行登录了。
 
@@ -216,7 +216,7 @@ SQL 注入和 XSS 一样，都是违背了数据和代码分离原则导致的�
 
 如图所示，我们利用 SQL 注入，就能在不需要密码的情况下，直接登录管理员的账号。
 
-![](https://cdn.yinhengli.com/image-20200726174642846.png)
+![](https://github.hengli.xyz/image-20200726174642846.png)
 
 攻击的前提是：后端只用了简单的拼接 SQL 的方式去查询数据。
 
@@ -377,4 +377,4 @@ select * from user where username = 'admin' or 1=1 and password = 'xxx'
 
 最后，如果你对此有任何想法，欢迎留言评论！
 
-![](https://cdn.yinhengli.com/shequ-fenxiang.png)
+![](https://github.hengli.xyz/shequ-fenxiang.png)

@@ -327,7 +327,7 @@ Ok，我们已经了解了所有应该掌握的专业术语，那就简单串解
 
 最后，如果你对此有任何想法，欢迎留言评论！
 
-![](https://cdn.yinhengli.com/qianduanrizhi_guanzhu.png)
+![](https://github.hengli.xyz/qianduanrizhi_guanzhu.png)
 
 参考链接：
 

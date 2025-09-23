@@ -42,7 +42,7 @@
 
 有了微前端之后，我们能将一个大项目拆分成多个小项目，这样一来，每一个小项目就非常好优化了。在优化了所有的小项目后，我们再将这些小项目组合起来，就能形成一个完美的大项目了。
 
-![](https://cdn.yinhengli.com/weiqianduan_demo.png)
+![](https://github.hengli.xyz/weiqianduan_demo.png)
 
 在实际项目中，如果遇到以下问题，可以考虑使用微前端：
 
@@ -125,7 +125,7 @@
 
 下图是各种方案的优缺点：
 
-![](https://cdn.yinhengli.com/image-20200716174954391.png)
+![](https://github.hengli.xyz/image-20200716174954391.png)
 
 这么多方案，各有利弊，我们应该如何选择呢？
 
@@ -189,11 +189,11 @@
 
 传统的部署方式如下：
 
-![](https://cdn.yinhengli.com/image-20200718113048802.png)
+![](https://github.hengli.xyz/image-20200718113048802.png)
 
 微前端项目部署方式如下：
 
-![](https://cdn.yinhengli.com/image-20200715172059236.png)
+![](https://github.hengli.xyz/image-20200715172059236.png)
 
 可以看到，项目最终的结构已经完全不同了，开发，测试，部署的流程也都需要进行变化。
 
@@ -228,11 +228,11 @@
 
 如图，所有的子项目都交由主项目管理。
 
-![](https://cdn.yinhengli.com/image-20200718110609087.png)
+![](https://github.hengli.xyz/image-20200718110609087.png)
 
 如果公司内部做了持续部署，部署就会更加简单。
 
-![](https://cdn.yinhengli.com/image-20200715175358240.png)
+![](https://github.hengli.xyz/image-20200715175358240.png)
 
 ## 思考与总结
 
@@ -242,4 +242,4 @@
 
 最后，如果你对此有任何想法，欢迎留言评论！
 
-![](https://cdn.yinhengli.com/qianduanrizhi_guanzhu.png)
+![](https://github.hengli.xyz/qianduanrizhi_guanzhu.png)

@@ -86,4 +86,4 @@
 
 读完这本书后，感觉是看了好多方法论，无论是否管用，都让我有了更开阔的思维方式，还是挺不错的。最后强调一点，这一套方法论在生活中不能直接套用，书中具体案例都是基于理想情况，现实中的情况会复杂很多，所以读者切不可生搬硬套。
 
-![前端日志](https://cdn.yinhengli.com/qianduanrizhi.png)
+![前端日志](https://github.hengli.xyz/qianduanrizhi.png)
