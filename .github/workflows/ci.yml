@@ -38,6 +38,6 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          BRANCH: master
-          FOLDER: docs/.vuepress/dist
-          CLEAN: true
+          branch: gh-pages
+          folder: docs/.vuepress/dist
+          clean: true
