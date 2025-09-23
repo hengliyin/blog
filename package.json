@@ -11,7 +11,7 @@
     "commit": "pnpm run lint && npx git-cz",
     "prepare": "husky"
   },
-  "author": "mengsixing",
+  "author": "hengliyin",
   "license": "ISC",
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.9.10",

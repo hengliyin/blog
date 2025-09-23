@@ -1,7 +1,7 @@
 <template>
   <div id="kitty-container" v-if="isShow">
     <!-- <el-popover @mousedown.native="move" @touchstart.native="touch" trigger="hover">
-      <img class="image"  @click="dialogVisible = true" src="https://cdn.jsdelivr.net/gh/mengsixing/picture/img/qianduanrizhi_log.jpg">
+      <img class="image"  @click="dialogVisible = true" src="https://cdn.jsdelivr.net/gh/hengliyin/picture/img/qianduanrizhi_log.jpg">
       <div class="text">前端日志</div>
       <div id="kitty" @dblclick="deleteKitty" :style="{background: 'url(' + kittyUrl + ')'}" slot="reference"></div>
     </el-popover> -->

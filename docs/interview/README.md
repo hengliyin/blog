@@ -2,7 +2,7 @@
 
 记录优质面试题，温故而知新。
 
-![](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/images.jpeg)
+![](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/images.jpeg)
 
 优秀的面试者应该具备的能力：
 

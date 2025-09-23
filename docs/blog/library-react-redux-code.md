@@ -353,4 +353,4 @@ function bindActionCreators(actionCreators, dispatch) {
   - provider 实现
   - connect 不需要
 
-本文代码仓库：[https://github.com/mengsixing/react-redux](https://github.com/mengsixing/react-redux)
+本文代码仓库：[https://github.com/hengliyin/react-redux](https://github.com/hengliyin/react-redux)

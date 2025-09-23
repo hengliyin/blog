@@ -31,7 +31,7 @@ GET /index.html
 
 请求示意图如下：
 
-![HTTP/0.9](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/image-20210123153342009.png)
+![HTTP/0.9](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/image-20210123153342009.png)
 
 可以看到，HTTP/0.9 只能发送 GET 请求，且每一个请求都单独创建一个 TCP 连接，响应端只能返回 HTML 格式的数据，响应完成之后 TCP 请求断开。
 
@@ -76,7 +76,7 @@ Content-Type: text/html
 
 请求示意图如下：
 
-![HTTP/1.0](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/image-20210123153409403.png)
+![HTTP/1.0](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/image-20210123153409403.png)
 
 可以看到，HTTP/1.0 扩展了请求方法和响应状态码，并且支持定义 HTTP 头部字段，通过 `Content-Type` 头，我们就能传输任何格式的数据了。同时可以看出，HTTP/1.0 仍然是一个请求对应一个 TCP 连接，不能形成复用。
 
@@ -139,7 +139,7 @@ Vary: Cookie, Accept-Encoding
 
 请求示意图如下：
 
-![HTTP/1.1](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/image-20210123153508087.png)
+![HTTP/1.1](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/image-20210123153508087.png)
 
 可以看到，HTTP/1.1 可以并行发起多个请求，并且也能复用同一个 TCP 连接，传输效率得到了提升。但响应端只能按照发送的顺序进行返回，为此很多浏览器会为每个域名至多打开 6 个连接，用增加队列的方式减少 HTTP 队头阻塞。
 
@@ -157,7 +157,7 @@ HTTP/2 将一个 HTTP 请求划分为 3 个部分：
 - 消息：一个请求或响应对应的一个或多个帧。
 - 数据流：已建立的连接内的双向字节流，可以承载一条或多条消息。
 
-![HTTP/2 数据流、消息和帧](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/streams_messages_frames01.svg)
+![HTTP/2 数据流、消息和帧](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/streams_messages_frames01.svg)
 
 图中可以看到，一个 TCP 连接上有多个数据流，一个数据流承载着双向消息，一条消息包含了多个帧，每个帧都有唯一的标识，指向所在的数据流，来自不同数据流的帧可以交错发送，然后再根据每个帧头的数据流标识符重新组装，这样就实现了数据传输。
 
@@ -178,7 +178,7 @@ HTTP/2 核心特点如下：
 
 请求示意图如下：
 
-![HTTP/2](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/image-20210123153541231.png)
+![HTTP/2](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/image-20210123153541231.png)
 
 可以看到，在 HTTP/2 中发送请求时，既不需要排队发送，也不需要排队返回，彻底解决了 HTTP 队头阻塞问题。对于头部信息，资源缓存等痛点也进行了优化，似乎已经是一种很完美的方案了。
 
@@ -203,12 +203,12 @@ HTTP/3 核心特点如下：
 - 传输层连接更快。
   - HTTP/3 基于 QUIC 协议，可以实现 0-RTT 建立连接，而 TCP 需要 3-RTT 才能建立连接。
 
-![HTTPS 及 QUIC 建连过程](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/v2-b4b3eb89464b192eed0304e5647a2d26_1440w.jpg)
+![HTTPS 及 QUIC 建连过程](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/v2-b4b3eb89464b192eed0304e5647a2d26_1440w.jpg)
 
 - 传输层多路复用。
   - HTTP/3 传输层使用 QUIC 协议，数据在传输时会被拆分成了多个 packet 包，每一个 packet 包都可以独立、交错发送，不用按顺序发送，也就避免了 TCP 队头阻塞。
 
-  ![QUIC 多路复用](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/v2-9e649330ab729b6438a8586c8b4f1bd3_1440w.jpg)
+  ![QUIC 多路复用](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/v2-9e649330ab729b6438a8586c8b4f1bd3_1440w.jpg)
 
   上图中的 Stream 之间相互独立，如果 Stream2 丢了一个 Pakcet，不会影响 Stream3 和 Stream4 正常读取。
 
@@ -218,7 +218,7 @@ HTTP/3 核心特点如下：
   - **更多的 ACK 块**。一般来说，接收方收到发送方的消息后都会发送一个 ACK 标识，表示收到了数据。但每收到一个数据就发送一个 ACK 效率太低了，通常是收到多个数据后再统一回复 ACK。TCP 中每收到 3 个数据包就要返回一个 ACK，而 QUIC 最多可以收到 256 个包之后，才返回 ACK。在丢包率比较严重的网络下，更多的 ACK 块可以减少重传量，提升网络效率。
   - **Ack Delay**。TCP 计算 RTT 时没有考虑接收方处理数据的延迟，如下图所示，这段延迟即 ACK Delay。QUIC 考虑了这段延迟，使得 RTT 的计算更加准确。
 
-  ![Ack Delay](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/image-20210130144400332.png)
+  ![Ack Delay](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/image-20210130144400332.png)
 
 - 优化的流量控制。
   - TCP 通过滑动窗口来控制流量，如果某一个包丢失了，滑动窗口并不能跨过丢失的包继续滑动，而是会卡在丢失的位置，等待数据重传后，才能继续滑动。
@@ -255,4 +255,4 @@ HTTP/3 核心特点如下：
 
 可以看到，从 HTTP/1.1 开始，HTTP 的发展方向就是：不断地提升传输效率。期待未来的 HTTP 能够给我们带来更加快速的传输体验。
 
-![](https://cdn.jsdelivr.net/gh/mengsixing/picture/img/qianduanrizhi2021.png)
+![](https://cdn.jsdelivr.net/gh/hengliyin/picture/img/qianduanrizhi2021.png)

@@ -238,4 +238,4 @@ module.exports = proto;
 
 ## 相关链接
 
-- [diy-koa 代码仓库](https://github.com/mengsixing/diy-koa)
+- [diy-koa 代码仓库](https://github.com/hengliyin/diy-koa)

@@ -7,7 +7,7 @@ module.exports = {
   },
   head: [["link", { rel: "icon", href: "/hero.jpeg" }]],
   themeConfig: {
-    repo: "mengsixing/blog",
+    repo: "hengliyin/blog",
     nav: [
       {
         text: "原创",
@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         text: "前端导航",
-        link: "https://mengsixing.github.io/front-end-navigation",
+        link: "https://hengliyin.github.io/front-end-navigation",
       },
     ],
     sidebar: {
