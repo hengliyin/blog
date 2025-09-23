@@ -16,12 +16,12 @@ jobs:
 
       - name: Install and Test 🔧
         run: |
-          npm install
-          npm run lint
+          pnpm install
+          pnpm run lint
 
       - name: Build 🙅‍♀️
         run: |
-          npm run build
+          pnpm run build
 
       - name: Deploy 🚀
         if: ${{ matrix.os == 'ubuntu-latest' }}

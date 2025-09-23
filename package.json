@@ -8,11 +8,11 @@
     "lint:fix": "lint-md ./docs --fix",
     "dev": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress dev docs",
     "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress build docs",
-    "commit": "npm run lint && npx git-cz"
+    "commit": "pnpm run lint && npx git-cz"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "pnpm run lint"
     }
   },
   "author": "mengsixing",
