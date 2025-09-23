@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      core-js:
+        specifier: ^2.6.12
+        version: 2.6.12
       element-ui:
         specifier: ^2.15.14
         version: 2.15.14(vue@2.7.16)

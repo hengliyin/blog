@@ -24,6 +24,7 @@
     "prettier": "^3.6.2"
   },
   "dependencies": {
+    "core-js": "^2.6.12",
     "element-ui": "^2.15.14",
     "vuepress": "^1.9.10"
   }
