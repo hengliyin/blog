@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "prettier --write ./docs/*/**.md && lint-md ./docs/blog",
     "lint:fix": "lint-md ./docs --fix",
-    "dev": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress dev docs",
-    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress build docs",
+    "dev": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress dev docs",
+    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress build docs",
     "commit": "npm run lint && npx git-cz"
   },
   "husky": {
@@ -21,6 +21,7 @@
     "@vuepress/plugin-back-to-top": "^1.8.0",
     "@vuepress/plugin-medium-zoom": "^1.8.0",
     "@vuepress/plugin-pwa": "^1.8.0",
+    "cross-env": "^7.0.3",
     "husky": "^4.3.6",
     "lint-md": "^0.2.0",
     "lint-md-cli": "^0.1.2",
