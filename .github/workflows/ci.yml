@@ -4,15 +4,15 @@ jobs:
   build-and-deploy:
     name: ${{ matrix.kind }} ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
     strategy:
       matrix:
         os: [macOS-latest, ubuntu-latest, windows-latest]
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-        with:
-          persist-credentials: false
+        uses: actions/checkout@v4
 
       - name: Install and Test 🔧
         run: |
@@ -25,10 +25,8 @@ jobs:
 
       - name: Deploy 🚀
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPOSITORY_NAME: mengsixing/mengsixing.github.io
           BRANCH: master
           FOLDER: docs/.vuepress/dist
           CLEAN: true
