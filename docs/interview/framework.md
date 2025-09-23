@@ -109,18 +109,18 @@ webpack 启动后，会读取配置中的 plugins，并创建对应实例，在 
 class HelloAsyncPlugin {
   apply(compiler) {
     // tapAsync() 基于回调(callback-based)
-    compiler.hooks.emit.tapAsync("HelloAsyncPlugin", function(
-      compilation,
-      callback
-    ) {
-      setTimeout(function() {
-        console.log("Done with async work...");
-        callback();
-      }, 1000);
-    });
+    compiler.hooks.emit.tapAsync(
+      "HelloAsyncPlugin",
+      function (compilation, callback) {
+        setTimeout(function () {
+          console.log("Done with async work...");
+          callback();
+        }, 1000);
+      },
+    );
 
     // tapPromise() 基于 promise(promise-based)
-    compiler.hooks.emit.tapPromise("HelloAsyncPlugin", compilation => {
+    compiler.hooks.emit.tapPromise("HelloAsyncPlugin", (compilation) => {
       return doSomethingAsync().then(() => {
         console.log("Done with async work...");
       });
@@ -153,12 +153,12 @@ const schema = {
   type: "object",
   properties: {
     test: {
-      type: "string"
-    }
-  }
+      type: "string",
+    },
+  },
 };
 
-module.exports = function(source) {
+module.exports = function (source) {
   const options = getOptions(this);
 
   validateOptions(schema, options, "Example Loader");
@@ -169,7 +169,7 @@ module.exports = function(source) {
 };
 
 // pitch方法，在捕获阶段执行的函数
-module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+module.exports.pitch = function (remainingRequest, precedingRequest, data) {
   data.value = 42;
 };
 ```
@@ -190,11 +190,11 @@ class APlugin {
     compiler.hooks.myCustomHook = new SyncHook(["参数1", "参数2"]);
     // 在当前插件中监听自定义事件
     compiler.hooks.myCustomHook.tap("APlugin", (a, b) =>
-      console.log("获取到参数：", a, b)
+      console.log("获取到参数：", a, b),
     );
     // 可以在任意的钩子函数中去触发自定义事件
-    compiler.hooks.compilation.tap("APlugin", compilation => {
-      compilation.hooks.afterOptimizeChunkAssets.tap("APlugin", chunks => {
+    compiler.hooks.compilation.tap("APlugin", (compilation) => {
+      compilation.hooks.afterOptimizeChunkAssets.tap("APlugin", (chunks) => {
         compiler.hooks.myCustomHook.call("a", "b");
       });
     });
@@ -206,7 +206,7 @@ class BPlugin {
   apply(compiler) {
     // 监听A组件定义的事件
     compiler.hooks.myCustomHook.tap("BPlugin", (a, b) =>
-      console.log("获取到参数：", a, b)
+      console.log("获取到参数：", a, b),
     );
   }
 }
@@ -246,13 +246,13 @@ vuex 的原理很简单，简单来说：
 const store = new Vuex.Store({
   // store 中的对象
   state: {
-    count: 0
+    count: 0,
   },
   // 唯一改变 store 的方法，只能是同步更新
   mutations: {
     increment(state) {
       state.count++;
-    }
+    },
   },
   // action 派发一个 mutation，可以使用异步方法
   actions: {
@@ -260,14 +260,14 @@ const store = new Vuex.Store({
       setTimeout(() => {
         context.commit("increment");
       }, 1500);
-    }
+    },
   },
   // 派生 store 中的状态
   getters: {
-    showCount: state => {
+    showCount: (state) => {
       return "当前的count是：" + state.count;
-    }
-  }
+    },
+  },
 });
 ```
 
@@ -481,7 +481,7 @@ function updateChildren() {
         nodeOps.insertBefore(
           parentElm,
           oldStartVnode.elm,
-          nodeOps.nextSibling(oldEndVnode.elm)
+          nodeOps.nextSibling(oldEndVnode.elm),
         );
       oldStartVnode = oldCh[++oldStartIdx];
       newEndVnode = newCh[--newEndIdx];
@@ -509,7 +509,7 @@ function updateChildren() {
           oldStartVnode.elm,
           false,
           newCh,
-          newStartIdx
+          newStartIdx,
         );
       } else {
         // 通过 key 找到可以复用的节点
@@ -520,7 +520,7 @@ function updateChildren() {
             newStartVnode,
             insertedVnodeQueue,
             newCh,
-            newStartIdx
+            newStartIdx,
           );
           // 将老节点的值设置为 undefined
           oldCh[idxInOld] = undefined;
@@ -535,7 +535,7 @@ function updateChildren() {
             oldStartVnode.elm,
             false,
             newCh,
-            newStartIdx
+            newStartIdx,
           );
         }
       }
@@ -553,7 +553,7 @@ function updateChildren() {
       newCh,
       newStartIdx,
       newEndIdx,
-      insertedVnodeQueue
+      insertedVnodeQueue,
     );
   } else if (newStartIdx > newEndIdx) {
     // 如果新节点首尾指针交叉了，代表新节点都遍历完成了。
@@ -619,7 +619,7 @@ Redux 中的中间件其实是用柯里化函数编写而成的，例如 logger 
 
 ```js
 // logger 中间件
-const loggerMiddle = store => next => action => {
+const loggerMiddle = (store) => (next) => (action) => {
   console.log("old state", store.getState());
   let result = next(action);
   console.log("next state", store.getState());

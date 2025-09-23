@@ -229,9 +229,9 @@ dispatch(action3);
 dispatch(batchActions([action1, action2, action3]));
 
 const BATCH = "BATCHED_ACTIONS";
-const batchActions = actions => ({ type: BATCH, payload: actions });
+const batchActions = (actions) => ({ type: BATCH, payload: actions });
 
-const canBatchedReducer = reducer => {
+const canBatchedReducer = (reducer) => {
   const batchedReducer = (state, action) => {
     if (action.type === BATCH) {
       return action.payload.reduce(batchedReducer, state);

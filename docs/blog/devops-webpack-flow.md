@@ -10,28 +10,28 @@
 为了更好的理解 webpack 模块打包机制，我们先来看一下 webpack 打包后的文件。
 
 ```js
-(function(modules) {
+(function (modules) {
   function __webpack_require__(moduleId) {
     var module = {
-      exports: {}
+      exports: {},
     };
     modules[moduleId].call(
       module.exports,
       module,
       module.exports,
-      __webpack_require__
+      __webpack_require__,
     );
     return module.exports;
   }
   return __webpack_require__("./example/entry.js");
 })({
-  "./example/entry.js": function(
+  "./example/entry.js": function (
     module,
     __webpack_exports__,
-    __webpack_require__
+    __webpack_require__,
   ) {
     // code...
-  }
+  },
 });
 ```
 
@@ -74,7 +74,7 @@ function createAsset(filename) {
   var code = fs.readFileSync(filename, "utf-8");
   var dependencies = [];
   var ast = babely.parse(code, {
-    sourceType: "module"
+    sourceType: "module",
   });
   // 把依赖的文件写入进来
   traverse(ast, {
@@ -82,18 +82,18 @@ function createAsset(filename) {
     ImportDeclaration: ({ node }) => {
       // 把依赖的模块加入到数组中
       dependencies.push(node.source.value);
-    }
+    },
   });
 
   const result = babel.transformFromAstSync(ast, null, {
-    presets: ["@babel/preset-env"]
+    presets: ["@babel/preset-env"],
   });
 
   var module = {
     id: id++,
     filename: filename,
     dependencies,
-    code: result.code
+    code: result.code,
   };
   return module;
 }
@@ -120,7 +120,7 @@ function createGraph(entry) {
   for (let asset of queue) {
     var baseDirPath = path.dirname(asset.filename);
     asset.mapping = {};
-    asset.dependencies.forEach(filename => {
+    asset.dependencies.forEach((filename) => {
       var realPath = path.join(baseDirPath, filename);
       var childAsset = createAsset(realPath);
       // 给子依赖项赋值

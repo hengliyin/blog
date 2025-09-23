@@ -85,7 +85,7 @@ class ThemedButton extends React.Component {
     return (
       // 子组件使用 context
       <ThemeContext.Consumer>
-        {theme => <Button theme={theme} />}
+        {(theme) => <Button theme={theme} />}
       </ThemeContext.Consumer>
     );
   }

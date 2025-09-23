@@ -161,7 +161,7 @@ nums.inOrder(nums.root);
 
 ```js
 // 后序遍历
-var postorderTraversal = function(root) {
+var postorderTraversal = function (root) {
   if (!root) {
     return [];
   }
@@ -193,7 +193,7 @@ function traversal(root, result) {
 // 如果 root 节点都大于 p，q，证明 p，q 在 root 节点的左侧
 // 如果 root 节点都小于 p，q，证明 p，q 在 root 节点的右侧
 // 否则就在中间，即找到了公共父节点
-var lowestCommonAncestor = function(root, p, q) {
+var lowestCommonAncestor = function (root, p, q) {
   if (p.left === q || p.right === q) {
     return p;
   }
@@ -218,7 +218,7 @@ var lowestCommonAncestor = function(root, p, q) {
 可以经过中序遍历，生成排好序的列表，就可以找到第 K 个元素了。
 
 ```js
-var kthSmallest = function(root, k) {
+var kthSmallest = function (root, k) {
   var result = [];
   traversal(root, result);
   return result[k - 1];
@@ -240,7 +240,7 @@ function traversal(root, result) {
 [leetcode 104](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
 
 ```js
-var maxDepth = function(root) {
+var maxDepth = function (root) {
   if (!root) {
     return 0;
   }
@@ -259,7 +259,7 @@ var maxDepth = function(root) {
 
 ```js
 //所有的递归的返回值有 4 种可能性，null、p、q、公共祖先
-var lowestCommonAncestor = function(root, p, q) {
+var lowestCommonAncestor = function (root, p, q) {
   //当遍历到叶结点后就会返回 null
   if (!root) {
     return root;
@@ -294,7 +294,7 @@ var lowestCommonAncestor = function(root, p, q) {
 一个路径可以包括，左边部分，右边部分，和左中右部分。我们可以分别求出这三个部分的最大路径，然后计算出最大的最大路径。
 
 ```js
-var maxPathSum = function(root) {
+var maxPathSum = function (root) {
   var max = { number: root.val };
   loop(root, max);
   return max.number;
@@ -406,26 +406,26 @@ hTable.showDistro();
 [leetcode 155](https://leetcode-cn.com/problems/min-stack/)
 
 ```js
-var MinStack = function() {
+var MinStack = function () {
   this.queue = [];
   this.min = Number.MAX_SAFE_INTEGER;
 };
 
-MinStack.prototype.push = function(x) {
+MinStack.prototype.push = function (x) {
   this.queue.push(x);
   this.min = Math.min(x, this.min);
 };
 
-MinStack.prototype.pop = function() {
+MinStack.prototype.pop = function () {
   this.queue.pop();
   this.min = Math.min.apply(null, this.queue);
 };
 
-MinStack.prototype.top = function() {
+MinStack.prototype.top = function () {
   return this.queue[this.queue.length - 1];
 };
 
-MinStack.prototype.getMin = function() {
+MinStack.prototype.getMin = function () {
   return this.min;
 };
 ```
@@ -439,12 +439,12 @@ MinStack.prototype.getMin = function() {
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
+var isValid = function (s) {
   var stack = [];
   var map = {
     "(": ")",
     "[": "]",
-    "{": "}"
+    "{": "}",
   };
 
   for (var i = 0; i < s.length; i++) {
@@ -485,7 +485,7 @@ var isValid = function(s) {
 [leetcode 142](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 
 ```js
-var detectCycle = function(head) {
+var detectCycle = function (head) {
   var quick = head;
   var slow = head;
   var visited;
@@ -521,7 +521,7 @@ var detectCycle = function(head) {
 [237 删除链表中的节点](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/)
 
 ```js
-var deleteNode = function(node) {
+var deleteNode = function (node) {
   var oldNext = node.next;
   node.val = node.next.val;
   node.next = oldNext.next;
@@ -537,7 +537,7 @@ var deleteNode = function(node) {
 两个指针等于移动了相同的距离, 有交点就返回, 无交点就是各走了两条指针的长度。
 
 ```js
-var getIntersectionNode = function(headA, headB) {
+var getIntersectionNode = function (headA, headB) {
   var h1 = headA;
   var h2 = headB;
   while (h1 != h2) {
@@ -561,7 +561,7 @@ var getIntersectionNode = function(headA, headB) {
 双指针算法，分别从队首和队尾进行移动，每次移动两端比较小的数据，以保证面积最大。
 
 ```js
-var maxArea = function(height) {
+var maxArea = function (height) {
   var max = 0;
   var left = 0;
   var right = height.length - 1;
@@ -585,7 +585,7 @@ var maxArea = function(height) {
 [leetcode 33](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
 
 ```js
-var search = function(nums, target) {
+var search = function (nums, target) {
   var start = 0;
   var end = nums.length - 1;
   while (start <= end) {
@@ -643,7 +643,7 @@ r2  7  6  5
 ```
 
 ```js
-var spiralOrder = function(matrix) {
+var spiralOrder = function (matrix) {
   var result = [];
   if (matrix.length == 0) return result;
   var r1 = 0,
@@ -689,7 +689,7 @@ var spiralOrder = function(matrix) {
 [leetcode 26](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
 
 ```js
-var removeDuplicates = function(nums) {
+var removeDuplicates = function (nums) {
   var index = 1;
   for (var i = 1; i < nums.length; i++) {
     if (nums[i] !== nums[i - 1]) {
@@ -706,7 +706,7 @@ var removeDuplicates = function(nums) {
 [leetcode 415](https://leetcode-cn.com/problems/add-strings/solution/)
 
 ```js
-var addStrings = function(num1, num2) {
+var addStrings = function (num1, num2) {
   var i = num1.length - 1,
     j = num2.length - 1;
   var result = [];
@@ -732,7 +732,7 @@ var addStrings = function(num1, num2) {
 [leetcode 283](https://leetcode-cn.com/problems/move-zeroes/)
 
 ```js
-var moveZeroes = function(nums) {
+var moveZeroes = function (nums) {
   var i = 0;
   for (var j = 0; j < nums.length; j++) {
     if (nums[j] !== 0) {
@@ -762,7 +762,7 @@ var moveZeroes = function(nums) {
 时间复杂度：nlogn + n^2 + 1 = n^2。
 
 ```js
-var threeSumClosest = function(nums, target) {
+var threeSumClosest = function (nums, target) {
   var sum = Number.MAX_SAFE_INTEGER;
   nums = nums.sort((a, b) => a - b);
   for (let i = 0; i < nums.length; i++) {
@@ -799,7 +799,7 @@ var threeSumClosest = function(nums, target) {
 3、删除 start.next = start.next.next 即可删除倒数第 N 个元素。
 
 ```js
-var removeNthFromEnd = function(head, n) {
+var removeNthFromEnd = function (head, n) {
   // 拼接新的 head 头部
   var start = new ListNode(Symbol());
   start.next = head;
@@ -841,7 +841,7 @@ var removeNthFromEnd = function(head, n) {
 4、当 i 和 j 相遇时，即停止遍历 i。
 
 ```js
-var removeElement = function(nums, val) {
+var removeElement = function (nums, val) {
   var len = nums.length;
   var i = 0;
   var j = len;
@@ -866,7 +866,7 @@ var removeElement = function(nums, val) {
 这里使用了暴力法。
 
 ```js
-var strStr = function(haystack, needle) {
+var strStr = function (haystack, needle) {
   if (needle.length === 0) {
     return 0;
   }
@@ -903,7 +903,7 @@ var strStr = function(haystack, needle) {
 3、然后进行截断拼接操作。
 
 ```js
-var rotateRight = function(head, k) {
+var rotateRight = function (head, k) {
   // 边界判断
   if (!head || k === 0) {
     return head;
@@ -961,7 +961,7 @@ var rotateRight = function(head, k) {
 - 当发现 current > end 退出循环
 
 ```js
-var sortColors = function(nums) {
+var sortColors = function (nums) {
   var start = 0;
   var end = nums.length - 1;
   var current = 0;
@@ -1002,7 +1002,7 @@ function swap(nums, a, b) {
 - 如果不一致，则表示符合要求，则需要给 start++ 处的元素赋值成最新的 item。
 
 ```js
-var removeDuplicates = function(nums) {
+var removeDuplicates = function (nums) {
   if (nums.length <= 2) {
     return nums.length;
   }
@@ -1023,7 +1023,7 @@ var removeDuplicates = function(nums) {
 构建两个链表，一个小于 x 的链表和一个大于等于 x 的链表，最后将两个链表连起来。
 
 ```js
-var partition = function(head, x) {
+var partition = function (head, x) {
   var smallHead = new ListNode(Symbol());
   var largeHead = new ListNode(Symbol());
 
@@ -1056,7 +1056,7 @@ var partition = function(head, x) {
 2、一次遍历，将合法字符组装成一个新的字符串，然后进行反转对比即可。
 
 ```js
-var isPalindrome = function(s) {
+var isPalindrome = function (s) {
   if (s.length < 2) {
     return true;
   }
@@ -1100,7 +1100,7 @@ var isPalindrome = function(s) {
 - 如果等于 target，直接返回结果
 
 ```js
-var twoSum = function(numbers, target) {
+var twoSum = function (numbers, target) {
   var start = 0;
   var end = numbers.length - 1;
   while (start < end) {
@@ -1135,7 +1135,7 @@ var twoSum = function(numbers, target) {
  * @param {number[]} nums
  * @return {number}
  */
-var minSubArrayLen = function(s, nums) {
+var minSubArrayLen = function (s, nums) {
   if (nums.length === 0) {
     return 0;
   }
@@ -1168,7 +1168,7 @@ var minSubArrayLen = function(s, nums) {
  * @param {number[]} nums
  * @return {number}
  */
-var minSubArrayLen = function(s, nums) {
+var minSubArrayLen = function (s, nums) {
   let left = 0,
     right = -1; // [left, right], 左闭右闭
   let minDistance = nums.length + 1; // 存储 left 与 right 间的距离
@@ -1209,7 +1209,7 @@ var minSubArrayLen = function(s, nums) {
 6、如果都不满足情况，就直接返回 false。
 
 ```js
-var isLongPressedName = function(name, typed) {
+var isLongPressedName = function (name, typed) {
   var i = 0;
   var j = 0;
   while (j <= name.length) {
@@ -1237,7 +1237,7 @@ var isLongPressedName = function(name, typed) {
 然后只需要比对 slowHead 和 preHead 是否一致即可。
 
 ```js
-var isPalindrome = function(head) {
+var isPalindrome = function (head) {
   if (!head || !head.next) {
     return true;
   }

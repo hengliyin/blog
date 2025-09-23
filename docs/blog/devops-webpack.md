@@ -21,7 +21,7 @@ webpack 是一个模块打包器。webpack 的主要目标是将 **js** 文件�
 
 ```js
 module.exports = {
-  entry: "./path/to/my/entry/file.js"
+  entry: "./path/to/my/entry/file.js",
 };
 ```
 
@@ -36,8 +36,8 @@ module.exports = {
   entry: "./path/to/my/entry/file.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "my-first-webpack.bundle.js"
-  }
+    filename: "my-first-webpack.bundle.js",
+  },
 };
 ```
 
@@ -52,7 +52,7 @@ const path = require("path");
 
 module.exports = {
   output: {
-    filename: "my-first-webpack.bundle.js"
+    filename: "my-first-webpack.bundle.js",
   },
   module: {
     rules: [
@@ -60,10 +60,10 @@ module.exports = {
         // 根据后缀名匹配需要处理的文件
         test: /\.txt$/,
         // 使用对应的loader处理文件
-        use: "raw-loader"
-      }
-    ]
-  }
+        use: "raw-loader",
+      },
+    ],
+  },
 };
 ```
 
@@ -74,7 +74,7 @@ loader 其实就是一个 function，接收一个参数 source，就是当前的
 ```js
 const loaderUtils = require("loader-utils");
 
-module.exports = function(source) {
+module.exports = function (source) {
   // 获取loader中传递的配置信息
   const options = loaderUtils.getOptions(this);
   // 返回处理后的内容
@@ -95,9 +95,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   module: {
-    rules: [{ test: /\.txt$/, use: "raw-loader" }]
+    rules: [{ test: /\.txt$/, use: "raw-loader" }],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })]
+  plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
 };
 ```
 
@@ -110,8 +110,8 @@ class APlugin {
   // apply方法，会在new plugin后被webpack自动执行。
   apply(compiler) {
     // 可以在任意的钩子函数中去触发自定义事件，也可以监听其他事件：compiler.hooks.xxxx
-    compiler.hooks.compilation.tap("APlugin", compilation => {
-      compilation.hooks.afterOptimizeChunkAssets.tap("APlugin", chunks => {
+    compiler.hooks.compilation.tap("APlugin", (compilation) => {
+      compilation.hooks.afterOptimizeChunkAssets.tap("APlugin", (chunks) => {
         //   这里只是简单的打印了chunks，你如果有更多的想法，都可以在这里实现。
         console.log("打印chunks：", chunks);
       });
@@ -130,7 +130,7 @@ class APlugin {
 
 ```js {2}
 module.exports = {
-  mode: "production"
+  mode: "production",
 };
 ```
 
@@ -166,16 +166,16 @@ module.exports = {
         // 缓存splitchunks
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          priority: -10
+          priority: -10,
         },
         default: {
           minChunks: 2, // 一个模块至少出现2次引用时，才会被拆分
           priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
-  }
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
 };
 ```
 
@@ -194,27 +194,27 @@ module.exports = {
     new HappyPack({
       id: "jsx",
       threadPool: happyThreadPool,
-      loaders: ["babel-loader"]
+      loaders: ["babel-loader"],
     }),
 
     new HappyPack({
       id: "styles",
       threadPool: happyThreadPool,
-      loaders: ["style-loader", "css-loader", "less-loader"]
-    })
-  ]
+      loaders: ["style-loader", "css-loader", "less-loader"],
+    }),
+  ],
 };
 
 exports.module.rules = [
   {
     test: /\.js$/,
-    use: "happypack/loader?id=jsx"
+    use: "happypack/loader?id=jsx",
   },
 
   {
     test: /\.less$/,
-    use: "happypack/loader?id=styles"
-  }
+    use: "happypack/loader?id=styles",
+  },
 ];
 ```
 
@@ -309,7 +309,7 @@ module.exports = {
     // 静态资源上cdn
     publicPath: "//xxx/cdn.com",
     // 不生成「所包含模块信息」的相关注释
-    pathinfo: false
+    pathinfo: false,
   },
   module: {
     rules: [
@@ -317,27 +317,27 @@ module.exports = {
         test: /\.txt$/,
         use: "raw-loader",
         // 缩小loader检查范围
-        include: path.join(__dirname, "src")
-      }
-    ]
+        include: path.join(__dirname, "src"),
+      },
+    ],
   },
   plugins: [
     // 开启scope hoisting
-    new ModuleConcatenationPlugin()
+    new ModuleConcatenationPlugin(),
   ],
   resolve: {
     // 使用别名，加快搜索
     alias: {
-      "~": path.resolve(__dirname, "../src")
+      "~": path.resolve(__dirname, "../src"),
     },
     // 配置用到的后缀名，方便webpack查找
-    extensions: ["js", "css"]
+    extensions: ["js", "css"],
   },
   // 开发阶段引用cdn上文件，可以避免打包库文件
   externals: {
     vue: "Vue",
-    "element-ui": "ELEMENT"
-  }
+    "element-ui": "ELEMENT",
+  },
 };
 ```
 

@@ -82,17 +82,17 @@ const textColor = Printer.fromString(text);
 program.version(textColor);
 
 const hander = {
-  create: env => {
+  create: (env) => {
     inquirer
       .prompt([
         {
           type: "list",
           name: "jskind",
           message: "请选择编程语言",
-          choices: ["react", "vue", "angular"]
-        }
+          choices: ["react", "vue", "angular"],
+        },
       ])
-      .then(answers => {
+      .then((answers) => {
         const spinner = ora("正在下载页面模板").start();
         console.log(answers);
 
@@ -106,10 +106,10 @@ const hander = {
           spinner.stop();
         }
       });
-  }
+  },
 };
 
-program.arguments("<cmd> [env]").action(function(cmd, env) {
+program.arguments("<cmd> [env]").action(function (cmd, env) {
   if (hander[cmd]) {
     hander[cmd](env);
   } else {

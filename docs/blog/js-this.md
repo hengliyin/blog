@@ -11,9 +11,9 @@ var value = 1;
 
 var foo = {
   value: 2,
-  bar: function() {
+  bar: function () {
     return this.value;
-  }
+  },
 };
 
 //示例1
@@ -54,21 +54,21 @@ console.log((foo.bar, foo.bar)());
 
   ```js
   var foo = {
-    bar: function() {
+    bar: function () {
       return this;
-    }
+    },
   };
   var fooReference = {
     base: EnvironmentRecord,
     name: "foo",
-    strict: false
+    strict: false,
   };
   GetBase(fooReference); // EnvironmentRecord;
 
   var barReference = {
     base: "foo",
     name: "bar",
-    strict: false
+    strict: false,
   };
   GetBase(barReference); // foo;
   ```
@@ -78,18 +78,15 @@ console.log((foo.bar, foo.bar)());
   - `IsPropertyReference(V)`. Returns true if either the base value is an object or HasPrimitiveBase(V) is true; otherwise returns false.
 
 - [8.7.1 GetValue (V)](http://es5.github.io/#x8.7.1)
-
   - If Type(V) is not Reference, return V.
   - Let base be the result of calling GetBase(V).
 
 - [规范 10.2.1.1.6 ImplicitThisValue()](http://es5.github.io/#x10.2.1.1.6)
-
   - Return `undefined`.
 
 ### 函数调用规范
 
 - [规范 11.2.3 Function Calls](http://es5.github.io/#x11.2.3)：
-
   - `步骤1`将 ref 赋值为 MemberExpression（简单理解 MemberExpression 其实就是()左边的部分）
   - `步骤2`判断 ref 的类型
     - `步骤3`如果 ref 是 Reference 类型
@@ -108,7 +105,6 @@ console.log((foo.bar, foo.bar)());
 2、交给函数调用规范，去解析 this。
 
 - [规范 11.2.1 Property Accessors](http://es5.github.io/#x11.2.1)
-
   - `Return a value of type Reference` whose base value is baseValue and whose referenced name is propertyNameString, and whose strict mode flag is strict.
   - 由此可见，属性读取，默认返回一个 Reference 类型
 

@@ -64,7 +64,7 @@
 class Database {
   select(sql) {
     const mysql = require("mysql");
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       // 连接数据库，并执行 sql 语句进行查询
       mysql.createConnection().query(sql, (error, results, fields) => {
         const success = results.length > 0 ? true : false;
@@ -78,7 +78,7 @@ class Service {
   async login(username, password) {
     const db = new Database();
     const success = await db.select(
-      `select * from user where username=${username} and password=${password}`
+      `select * from user where username=${username} and password=${password}`,
     );
     return success ? "登录成功" : "登录失败";
   }
@@ -117,7 +117,7 @@ web.matchRouter("login");
 class Database {
   select(sql) {
     const mysql = require("mysql");
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       // 连接数据库，并执行 sql 语句进行查询
       mysql.createConnection().query(sql, (error, results, fields) => {
         const success = results.length > 0 ? true : false;
@@ -134,7 +134,7 @@ class Service {
   async login(username, password) {
     // const db = new Database();
     const success = await this.db.select(
-      `select * from user where username=${username} and password=${password}`
+      `select * from user where username=${username} and password=${password}`,
     );
     return success ? "登录成功" : "登录失败";
   }
@@ -186,7 +186,7 @@ export default function createIoC() {
     use(key) {
       const { callback } = iocMap.get(key);
       return callback();
-    }
+    },
   };
 }
 ```

@@ -180,7 +180,6 @@ CSRF（Cross-site request forgery）跨站请求伪造，是一种利用用户�
 由于点击劫持主要通过 iframe，所以在防御时，主要基于 iframe 去做。
 
 - 方案一：frame busting
-
   - 正常网站使用 JS 脚本判断是否被恶意网站嵌入，如：博客网站监测到被一个 iframe 打开，自动跳转到正常的页面即可。
 
   ```js
@@ -191,13 +190,11 @@ CSRF（Cross-site request forgery）跨站请求伪造，是一种利用用户�
   ```
 
 - 方案二：使用 HTTP 中的 x-frame-options 头，控制 iframe 的加载，它有 3 个值可选：
-
   - DENY，表示页面不允许通过 iframe 的方式展示。
   - SAMEORIGIN，表示页面可以在相同域名下通过 iframe 的方式展示。
   - ALLOW-FROM，表示页面可以在指定来源的 iframe 中展示。
 
 - 配置 iframe 的 [sandbox](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe) 属性
-
   - sandbox = "allow-same-origin" 则只能加载与主站同域的资源。
 
 ### 服务器端攻击

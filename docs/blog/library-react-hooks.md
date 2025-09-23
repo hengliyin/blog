@@ -103,7 +103,7 @@ class Child extends React.Component {
       <div>
         <ThemeContext.Provider value="light">
           <ThemeContext.Consumer>
-            {theme => <div>当前主题: {theme}</div>}
+            {(theme) => <div>当前主题: {theme}</div>}
           </ThemeContext.Consumer>
         </ThemeContext.Provider>
       </div>

@@ -57,7 +57,7 @@ const b2 = array.splice(0, 2);
 **柯里化** 是指传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。
 
 ```js
-var checkage = min => age => age > min;
+var checkage = (min) => (age) => age > min;
 var checkage20 = checkage(20);
 checkage20(100);
 // true
@@ -70,7 +70,7 @@ checkage20(100);
 **函数组合**定义一个组合函数来讲多个函数调用组合成一个，为了解决类似的函数嵌套问题 `f(h(j(k())))` 。
 
 ```js
-var compose = (f, g) => x => f(g(x));
+var compose = (f, g) => (x) => f(g(x));
 
 function add(a) {
   return a + a;
@@ -123,7 +123,7 @@ function hoc(fn) {
 
 ```js
 function a(x) {
-  return function(y) {
+  return function (y) {
     return x + y;
   };
 }
@@ -192,7 +192,7 @@ class Functor {
   }
 }
 
-Functor.of = function(value) {
+Functor.of = function (value) {
   return new this(value);
 };
 ```
@@ -202,12 +202,12 @@ Functor.of = function(value) {
 一般约定，函子的标志就是容器具有 map 方法。该方法将容器里面的每一个值，映射到另一个容器。
 
 ```js
-new Functor(2).map(function(two) {
+new Functor(2).map(function (two) {
   return two + 2;
 });
 // Functor(4)
 
-new Functor("flamethrowers").map(function(s) {
+new Functor("flamethrowers").map(function (s) {
   return s.toUpperCase();
 });
 // Functor('FLAMETHROWERS')
@@ -229,7 +229,7 @@ new Functor("bombs").map(_.concat(" away")).map(_.prop("length"));
 下面就用 of 方法替换掉 new。
 
 ```js
-Functor.of = function(val) {
+Functor.of = function (val) {
   return new Functor(val);
 };
 ```
@@ -237,7 +237,7 @@ Functor.of = function(val) {
 然后，前面的例子就可以改成下面这样。
 
 ```js
-Functor.of(2).map(function(two) {
+Functor.of(2).map(function (two) {
   return two + 2;
 });
 // Functor(4)
@@ -341,14 +341,12 @@ ap 函子的意义在于，对于那些多参数的函数，就可以从多个�
 
 ```js
 function add(x) {
-  return function(y) {
+  return function (y) {
     return x + y;
   };
 }
 
-Ap.of(add)
-  .ap(Maybe.of(2))
-  .ap(Maybe.of(3));
+Ap.of(add).ap(Maybe.of(2)).ap(Maybe.of(3));
 // Ap(5)
 ```
 
@@ -392,14 +390,14 @@ I/O 是不纯的操作，普通的函数式编程没法做，这时就需要把 
 ```js
 var fs = require("fs");
 
-var readFile = function(filename) {
-  return new IO(function() {
+var readFile = function (filename) {
+  return new IO(function () {
     return fs.readFileSync(filename, "utf-8");
   });
 };
 
-var print = function(x) {
-  return new IO(function() {
+var print = function (x) {
+  return new IO(function () {
     console.log(x);
     return x;
   });
@@ -419,20 +417,16 @@ readFile("./user.txt").flatMap(print);
 由于返回还是 IO 函子，所以可以实现链式操作。因此，在大多数库里面，flatMap 方法被改名成 chain。
 
 ```js
-var tail = function(x) {
-  return new IO(function() {
+var tail = function (x) {
+  return new IO(function () {
     return x[x.length - 1];
   });
 };
 
-readFile("./user.txt")
-  .flatMap(tail)
-  .flatMap(print);
+readFile("./user.txt").flatMap(tail).flatMap(print);
 
 // 等同于
-readFile("./user.txt")
-  .chain(tail)
-  .chain(print);
+readFile("./user.txt").chain(tail).chain(print);
 ```
 
 上面代码读取了文件 user.txt，然后选取最后一行输出。

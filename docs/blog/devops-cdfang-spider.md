@@ -15,14 +15,12 @@
 ## 项目选型
 
 1. 三大框架里选哪个？
-
    - react 个人爱好。
    - react-router 定义路由。
    - react context 状态管理。
    - react hooks 组件化。
 
 2. 引入强类型语言？
-
    - typescript。为 js 提供类型支持，编辑器友好，增加代码可维护性，使用起来心里踏实。
    - 在使用第三方库时，可以写出更加符合规范的代码，避免 api 乱用等。
    - 项目中依赖了大量 @types/xxx 包，无形中增加了项目体积。
@@ -30,42 +28,35 @@
    - 目前仍然存在很多库没有 @types 支持，使用起来并不方便。
 
 3. css 选型？
-
    - 预编译器 less。项目中使用了变量定义，选择器嵌套，选择器复用等，less 够用了。
    - 解决命名冲突可以使用 css modules，暂未考虑 css in js。
    - 使用 bem 命名规范。
    - 使用 postcss 插件 autoprefixer，增加 css 兼容性。
 
 4. 构建工具选哪个？
-
    - webpack。内置 tree shaking，scope hosting 等，打包效率高，社区活跃。
    - webpack-merge 合并不同环境配置文件。
    - 配置 externals。引入 cdn 代替 node_modules 中体积较大的包。
    - gulp。用来打包 node 端代码。
 
 5. 代码规范检查？
-
    - eslint。辅助编码规范执行，有效控制代码质量。同时也支持校验 typescript 语法。
    - 配置 eslint-config-airbnb 规则。
    - 配置 eslint-config-prettier 关闭和 prettier 冲突的规则。
 
 6. 测试框架选型？
-
    - jest。大而全，包含：测试框架，断言库，mock 数据，覆盖率等。
    - enzyme。测试 react 组件。
 
 7. 后端框架选型？
-
    - koa。精简好用，中间件机制强大。
    - apollo-server。帮助搭建 graphQL 后端环境。
 
 8. 数据库选型？
-
    - mongodb。类 json 的存错格式，方便存储，前端友好。
    - 配置 mongoose，方便给 mongodb 数据库建模。
 
 9. 接口方式选型？
-
    - graphql。可以根据需要格式获取对应数据，减少接口冗余数据。
    - graphql schema 定义了后端接口的参数，操作和返回类型，从此不需要提供接口文档。
    - 前端可以在 schema 定义后开始开发，数据格式自己掌握。

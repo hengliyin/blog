@@ -68,9 +68,9 @@ optimization: {
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
-      sourceMap: true // set to true if you want JS source maps
+      sourceMap: true, // set to true if you want JS source maps
     }),
-    ...Plugins
+    ...Plugins,
   ];
 }
 ```
@@ -91,9 +91,9 @@ new HtmlWebpackPlugin({
     keepClosingSlash: true,
     minifyJS: true,
     minifyCSS: true,
-    minifyURLs: true
+    minifyURLs: true,
   },
-  chunksSortMode: "dependency"
+  chunksSortMode: "dependency",
 });
 ```
 
@@ -104,7 +104,7 @@ new HtmlWebpackPlugin({
 ```js
 const cssnano = require("cssnano");
 module.exports = {
-  plugins: [cssnano]
+  plugins: [cssnano],
 };
 ```
 

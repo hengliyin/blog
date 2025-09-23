@@ -26,7 +26,7 @@ var request = {
   },
   set header(val) {
     this.req.headers = val;
-  }
+  },
 };
 ```
 
@@ -83,17 +83,17 @@ koa-compose 接收一个 middleware 的集合，并返回一个函数用来执�
 
 ```js
 var middlewareArray = [
-  function(context, next) {
+  function (context, next) {
     console.log(1);
     next();
     console.log(3);
   },
-  function(context, next) {
+  function (context, next) {
     console.log(2);
-  }
+  },
 ];
 function compose(middleware) {
-  return function(context, next) {
+  return function (context, next) {
     let index = -1;
     return dispatch(0);
     function dispatch(i) {
@@ -148,9 +148,7 @@ class Application extends Emitter {
 
   handleRequest(ctx, fnMiddleware) {
     const handleResponse = () => respond(ctx);
-    return fnMiddleware(ctx)
-      .then(handleResponse)
-      .catch(onerror);
+    return fnMiddleware(ctx).then(handleResponse).catch(onerror);
   }
 
   createContext(req, res) {

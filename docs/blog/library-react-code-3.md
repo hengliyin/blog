@@ -114,7 +114,7 @@ Fiber 具体执行过程如下：
 function unstable_scheduleCallback(
   priorityLevel,
   callback,
-  deprecated_options
+  deprecated_options,
 ) {
   var startTime =
     currentEventStartTime !== -1
@@ -126,11 +126,11 @@ function unstable_scheduleCallback(
 var localDate = Date;
 if (hasNativePerformanceNow) {
   var Performance = performance;
-  exports.unstable_now = function() {
+  exports.unstable_now = function () {
     return Performance.now();
   };
 } else {
-  exports.unstable_now = function() {
+  exports.unstable_now = function () {
     return localDate.now();
   };
 }
@@ -182,7 +182,7 @@ var newNode = {
   priorityLevel: currentPriorityLevel, // 任务优先级
   expirationTime: expirationTime, // 任务的过期时间
   next: null, // 下一个节点
-  previous: null // 上一个节点
+  previous: null, // 上一个节点
 };
 
 // 插入指定节点
@@ -244,7 +244,7 @@ function scheduleHostCallbackIfNeeded() {
   }
 }
 
-requestHostCallback = function(callback, absoluteTimeout) {
+requestHostCallback = function (callback, absoluteTimeout) {
   scheduledHostCallback = callback;
   timeoutTime = absoluteTimeout;
   if (isFlushingHostCallback || absoluteTimeout < 0) {
@@ -271,15 +271,15 @@ requestHostCallback = function(callback, absoluteTimeout) {
 var ANIMATION_FRAME_TIMEOUT = 100;
 var rAFID = void 0;
 var rAFTimeoutID = void 0;
-var requestAnimationFrameWithTimeout = function(callback) {
+var requestAnimationFrameWithTimeout = function (callback) {
   // 循环调用 requestAnimationFrame，因为 callback 中会继续调用 requestAnimationFrameWithTimeout
-  rAFID = localRequestAnimationFrame(function(timestamp) {
+  rAFID = localRequestAnimationFrame(function (timestamp) {
     // cancel the setTimeout
     localClearTimeout(rAFTimeoutID);
     callback(timestamp);
   });
   // 判断浏览器 tab 页切换用。
-  rAFTimeoutID = localSetTimeout(function() {
+  rAFTimeoutID = localSetTimeout(function () {
     // cancel the requestAnimationFrame
     localCancelAnimationFrame(rAFID);
     callback(exports.unstable_now());
@@ -298,7 +298,7 @@ var previousFrameTime = 33;
 var activeFrameTime = 33;
 
 // animationTick 方法，计算帧过期时间并压缩帧。
-var animationTick = function(rafTime) {
+var animationTick = function (rafTime) {
   if (scheduledHostCallback !== null) {
     // 有任务再进行递归，没任务的话不需要工作。
     requestAnimationFrameWithTimeout(animationTick);
@@ -352,7 +352,7 @@ var port = channel.port2;
 // 1、如果当前帧没过期，说明当前帧有富余时间，可以执行任务。
 // 2、如果当前帧过期了，说明当前帧没有时间了，这里再看一下当前任务 firstCallbackNode 是否过期
 // 如果过期了也要执行任务；如果当前任务没过期，说明不着急，那就先不执行。
-channel.port1.onmessage = function(event) {
+channel.port1.onmessage = function (event) {
   isMessageEventScheduled = false;
   var prevScheduledCallback = scheduledHostCallback;
   var prevTimeoutTime = timeoutTime;
@@ -455,7 +455,7 @@ function flushWork(didUserCallbackTimeout) {
   }
 }
 
-shouldYieldToHost = function() {
+shouldYieldToHost = function () {
   return frameDeadline <= exports.unstable_now();
 };
 ```
@@ -515,7 +515,7 @@ function flushFirstCallback() {
       priorityLevel: priorityLevel,
       expirationTime: expirationTime,
       next: null,
-      previous: null
+      previous: null,
     };
 
     // Insert the new callback into the list, sorted by its expiration. This is
@@ -525,7 +525,10 @@ function flushFirstCallback() {
     // 将新回调插入到列表中，并按其过期时间排序。这是几乎与 schedulecallback 中的代码相同，只是回调被插入到列表之前的回调中，而不是之后的回调。
     if (firstCallbackNode === null) {
       // 这是列表中的第一个回调。
-      firstCallbackNode = continuationNode.next = continuationNode.previous = continuationNode;
+      firstCallbackNode =
+        continuationNode.next =
+        continuationNode.previous =
+          continuationNode;
     } else {
       var nextAfterContinuation = null;
       var node = firstCallbackNode;

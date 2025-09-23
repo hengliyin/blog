@@ -100,7 +100,7 @@ export { MyClass as default };
 import() 类似于 node 的 require 方法，区别主要是，前者是异步加载，后者是同步加载。
 
 ```js
-import("my_module").then(res => {
+import("my_module").then((res) => {
   console.log(res.default);
 });
 ```

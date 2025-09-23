@@ -22,7 +22,7 @@ test.js 文件内容如下：
 ```js
 const Koa = require("koa");
 const app = new Koa();
-app.use(function(ctx) {
+app.use(function (ctx) {
   ctx.body = "hello docker";
 });
 app.listen(3456);

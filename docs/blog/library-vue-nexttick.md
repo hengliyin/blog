@@ -24,9 +24,7 @@
 <template>
   <div>
     <span id="text">{{ message }}</span>
-    <button @click="changeData">
-      changeData
-    </button>
+    <button @click="changeData">changeData</button>
   </div>
 </template>
 
@@ -34,7 +32,7 @@
 export default {
   data() {
     return {
-      message: "hello"
+      message: "hello",
     };
   },
   methods: {
@@ -48,8 +46,8 @@ export default {
         const textContent = document.getElementById("text").textContent;
         console.warn(textContent === "hello world"); // true
       });
-    }
-  }
+    },
+  },
 };
 </script>
 ```
@@ -140,7 +138,7 @@ if (typeof Promise !== "undefined") {
   const observer = new MutationObserver(flushCallbacks);
   const textNode = document.createTextNode(String(counter));
   observer.observe(textNode, {
-    characterData: true
+    characterData: true,
   });
   timerFunc = () => {
     counter = (counter + 1) % 2;
@@ -189,7 +187,7 @@ function flushCallbacks() {
 
 ```typescript
 // 我们使用 this.$nextTick 其实就是调用 nextTick 方法
-Vue.prototype.$nextTick = function(fn: Function) {
+Vue.prototype.$nextTick = function (fn: Function) {
   return nextTick(fn, this);
 };
 ```

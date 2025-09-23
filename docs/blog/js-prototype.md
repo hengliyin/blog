@@ -24,7 +24,7 @@ Js 中的原型链是一个比较有意思的话题，它采用了一套巧妙�
 ```js
 function Student(name) {
   this.name = name;
-  this.study = function() {
+  this.study = function () {
     console.log("study js");
   };
 }
@@ -45,7 +45,7 @@ student2.study();
 function Student(name) {
   this.name = name;
 }
-Student.prototype.study = function() {
+Student.prototype.study = function () {
   console.log("study js");
 };
 // 创建 2 个实例
@@ -73,7 +73,7 @@ student2.study();
 function Student(name) {
   this.name = name;
 }
-Student.prototype.study = function() {
+Student.prototype.study = function () {
   console.log("study js");
 };
 
@@ -100,7 +100,7 @@ console.log(student.__proto__ === Student.prototype); // true
 function Student(name) {
   this.name = name;
 }
-Student.prototype.study = function() {
+Student.prototype.study = function () {
   console.log("study js");
 };
 
@@ -125,7 +125,6 @@ student.toString(); // "[object Object]"
 这里提供一个推导步骤：
 
 1. 先找 `__proto__` 前面的对象，也就是 Student.prototype 的构造函数。
-
    1. 判断 Student.prototype 类型， `typeof Student.prototype` 是 `object`。
    2. `object` 的构造函数是 Object。
    3. 得出 Student.prototype 的构造函数是 Object。
@@ -141,7 +140,6 @@ student.toString(); // "[object Object]"
 > `Function.__proto__` 是什么？
 
 1. 找 Function 的构造函数。
-
    1. 判断 Function 类型，`typeof Function` 是 `function`。
    2. 函数类型的构造函数就是 Function。
    3. 得出 Function 的构造函数是 Function。
@@ -155,7 +153,6 @@ student.toString(); // "[object Object]"
 这里只是稍微变了一下，很多同学就不知道了，其实和上面的问题是一样的。
 
 1. 找 Number 的构造函数。
-
    1. 判断 Number 类型，`typeof Number` 是 `function`。
    2. 函数类型的构造函数就是 Function。
    3. 得出 Number 的构造函数是 Function。
@@ -223,7 +220,7 @@ Js 代码在执行时，会被 V8 引擎解析，这时 V8 会用不同的模板
 function Student(name) {
   this.name = name;
 }
-Student.prototype.study = function() {
+Student.prototype.study = function () {
   console.log("study js");
 };
 const student = new Student("xiaoming");

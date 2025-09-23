@@ -166,8 +166,11 @@ img {
       /* 首先引入字体文件 */
       @font-face {
         font-family: "iconfont";
-        src: url("iconfont.eot"), url("iconfont.woff") format("woff"), url("iconfont.ttf")
-            format("truetype"), url("iconfont.svg#iconfont") format("svg");
+        src:
+          url("iconfont.eot"),
+          url("iconfont.woff") format("woff"),
+          url("iconfont.ttf") format("truetype"),
+          url("iconfont.svg#iconfont") format("svg");
       }
       /* 定义字体类 */
       .iconfont {

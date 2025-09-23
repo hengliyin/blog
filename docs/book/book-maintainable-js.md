@@ -170,7 +170,7 @@ JS 可以使用一下几种方式来操作 HTML：
 
 ```js
 // AMD 模块定义
-define("module-name", ["dep1", "dep2"], function(dep1, dep2) {});
+define("module-name", ["dep1", "dep2"], function (dep1, dep2) {});
 ```
 
 - 使用 RequireJS 更好地引入模块。
@@ -178,7 +178,7 @@ define("module-name", ["dep1", "dep2"], function(dep1, dep2) {});
 RequireJS 增加了另一个全局函数 require()，专门用来加载指定的依赖和执行回调函数。
 
 ```js
-require(["my-book"], function(books) {
+require(["my-book"], function (books) {
   console.log(books);
 });
 ```

@@ -36,7 +36,7 @@ scrollWidth：
 function throttle(fn, timeout) {
   let lastExecTime = 0;
   let throttleId = null;
-  return function(...rest) {
+  return function (...rest) {
     const now = +new Date();
     const remaining = now - lastExecTime;
     if (remaining >= timeout) {
@@ -70,7 +70,7 @@ function throttle(fn, timeout) {
 ```js
 function debounce(callback, timeout, immediate) {
   var id;
-  return function() {
+  return function () {
     clearInterval(id);
     if (immediate) {
       callback.apply(this, arguments);
@@ -115,7 +115,7 @@ Function.prototype.myBind = (context, ...rest) => {
     throw new Error("只能作为函数调用");
   }
   const fn = this;
-  const result = function(...params) {
+  const result = function (...params) {
     // 如果是 new 对象出的，this 绑定的应该绑定为构造函数
     return fn.apply(new.target ? this : context, [...rest, ...params]);
   };
@@ -246,7 +246,7 @@ setInterval 有个了例外：当间隙时间较小、方法内部执行非常�
 ## 14、手写一个 call 函数
 
 ```js
-Function.prototype.myCall = function(context, ...rest) {
+Function.prototype.myCall = function (context, ...rest) {
   // context 是需要绑定的作用域
   var context = context || window;
   // 避免修改到原对象的属性

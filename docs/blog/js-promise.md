@@ -108,16 +108,16 @@ function promiseResolutionProcedure(promise2, x, resolve, reject) {
       if (typeof then === "function") {
         then.call(
           x,
-          y => {
+          (y) => {
             if (called) return;
             called = true;
             promiseResolutionProcedure(promise2, y, resolve, reject);
           },
-          reason => {
+          (reason) => {
             if (called) return;
             called = true;
             reject(reason);
-          }
+          },
         );
       } else {
         resolve(x);
@@ -150,21 +150,21 @@ class MyPromise {
 
       for (let i = 0; i < promiseArray.length; i++) {
         promiseArray[i].then(
-          data => {
+          (data) => {
             processResult(i, data);
           },
-          err => {
+          (err) => {
             // 处理失败
             reject(err);
-          }
+          },
         );
       }
     });
   }
   static race(promiseArray) {
     return new MyPromise((resolve, reject) => {
-      promiseArray.forEach(promiseFn => {
-        promiseFn.then(data => {
+      promiseArray.forEach((promiseFn) => {
+        promiseFn.then((data) => {
           resolve(data);
         }, reject);
       });
@@ -186,18 +186,18 @@ class MyPromise {
 
       for (let i = 0; i < promiseArray.length; i++) {
         promiseArray[i].then(
-          data => {
+          (data) => {
             processResult(i, { status: "fulfilled", value: data });
           },
-          err => {
+          (err) => {
             processResult(i, { status: "rejected", reason: err });
-          }
+          },
         );
       }
     });
   }
   static resolve(val) {
-    return new MyPromise(resolve => {
+    return new MyPromise((resolve) => {
       resolve(val);
     });
   }
@@ -215,7 +215,7 @@ class MyPromise {
     this.rejectedCallbacks = [];
     this.finallyCallbacks = [];
 
-    const resolve = val => {
+    const resolve = (val) => {
       if (this.state === PENDING) {
         // 规范没有这一条，但chrome 是这样实现的
         // 如果 resolve 一个 thenable，也会进行 promise 执行过程处理
@@ -229,12 +229,12 @@ class MyPromise {
         this.state = FULFILLED;
         this.value = val;
         // 执行所有的 then 方法
-        this.resolvedCallbacks.map(fn => fn());
+        this.resolvedCallbacks.map((fn) => fn());
         // 最后执行 finally 方法
-        this.finallyCallbacks.map(fn => fn());
+        this.finallyCallbacks.map((fn) => fn());
       }
     };
-    const reject = val => {
+    const reject = (val) => {
       if (this.state === PENDING) {
         // 规范没有这一条，但chrome 是这样实现的
         // 如果 resolve 一个 thenable，也会进行 promise 执行过程处理
@@ -248,9 +248,9 @@ class MyPromise {
         this.reason = val;
         this.state = REJECTED;
         // 执行所有的 then 方法
-        this.rejectedCallbacks.map(fn => fn());
+        this.rejectedCallbacks.map((fn) => fn());
         // 最后执行 finally 方法
-        this.finallyCallbacks.map(fn => fn());
+        this.finallyCallbacks.map((fn) => fn());
       }
     };
     try {
@@ -261,11 +261,11 @@ class MyPromise {
   }
   then(onFulfilled, onRejected) {
     onFulfilled =
-      typeof onFulfilled === "function" ? onFulfilled : data => data;
+      typeof onFulfilled === "function" ? onFulfilled : (data) => data;
     onRejected =
       typeof onRejected === "function"
         ? onRejected
-        : err => {
+        : (err) => {
             throw err;
           };
     let promise2 = new Promise((resolve, reject) => {

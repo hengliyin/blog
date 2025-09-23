@@ -125,13 +125,13 @@ const resolver = {
   Query: {
     allPhotos: () => {
       return photos;
-    }
+    },
   },
   Photo: {
-    postedBy: photo => {
-      return students.find(item => item.id === photo.postedBy);
-    }
-  }
+    postedBy: (photo) => {
+      return students.find((item) => item.id === photo.postedBy);
+    },
+  },
 };
 ```
 
@@ -188,16 +188,16 @@ const resolver = {
     postPhoto: async (parent, args, { pubsub }) => {
       // 上传图片时触发更新
       pubsub.publish("photo-add");
-    }
+    },
   },
   Subscription: {
     newPhoto: {
       // 监听 photo-add 事件，并实时向客户端推送
       subscribe: (parent, args, { pubsub }) => {
         return pubsub.asyncIterator("photo-add");
-      }
-    }
-  }
+      },
+    },
+  },
 };
 ```
 
@@ -274,7 +274,7 @@ const server = new ApolloServer();
 const app = express();
 server.applyMiddleware({ app });
 httpServer.listen({ port: 4000 }, () =>
-  console.log(`Server ready at http://localhost:4000${server.graphqlPath}`)
+  console.log(`Server ready at http://localhost:4000${server.graphqlPath}`),
 );
 ```
 
@@ -296,7 +296,7 @@ const resolvers = {
     },
     allPhotos: () => {
       return photos;
-    }
+    },
   },
   Mutation: {
     // 第一个参数为父查询集，因为可能是在嵌套调用
@@ -304,25 +304,25 @@ const resolvers = {
     // 第三个参数是在初始化 ApolloServer 时注入的对象
     postPhoto: (parent, args, { pubsub }) => {
       return photos[0];
-    }
+    },
   },
   Student: {
-    isGood: parent => {
+    isGood: (parent) => {
       return parent.grade > 90;
-    }
+    },
   },
   Photo: {
-    postedBy: photo => {
-      return students.find(item => item.id === photo.postedBy);
-    }
-  }
+    postedBy: (photo) => {
+      return students.find((item) => item.id === photo.postedBy);
+    },
+  },
 };
 const typeDefs = fs.readFileSync("./typeDefs.graphql", {
-  encoding: "utf-8"
+  encoding: "utf-8",
 });
 const server = new ApolloServer({
   typeDefs, // 我们定义的 type 文件
-  resolvers // type 对应的处理方法
+  resolvers, // type 对应的处理方法
 });
 ```
 

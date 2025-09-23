@@ -39,7 +39,7 @@ a {
   --danger-theme: {
     color: white;
     background-color: red;
-  }
+  };
 }
 
 .danger {

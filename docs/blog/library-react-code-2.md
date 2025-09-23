@@ -31,7 +31,7 @@ import {
   createContainer,
   updateContainer,
   batchedUpdates,
-  unbatchedUpdates
+  unbatchedUpdates,
 } from "react-reconciler/inline.dom";
 ```
 
@@ -47,7 +47,7 @@ let fiberRoot;
 // 初次渲染
 root = container._reactRootContainer = legacyCreateRootFromDOMContainer(
   container,
-  forceHydrate
+  forceHydrate,
 );
 fiberRoot = root._internalRoot;
 // 不使用批量更新
@@ -186,45 +186,45 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0
+      count: 0,
     };
   }
   test() {
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
     });
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
     });
   }
   componentDidMount() {
     let me = this;
     me.setState({
-      count: me.state.count + 1
+      count: me.state.count + 1,
     });
     console.log("第一次 componentDidMount:", me.state.count);
     me.setState({
-      count: me.state.count + 1
+      count: me.state.count + 1,
     });
     console.log("第二次 componentDidMount:", me.state.count);
-    setTimeout(function() {
+    setTimeout(function () {
       me.setState({
-        count: me.state.count + 1
+        count: me.state.count + 1,
       });
       console.log("第一次 setTimeout:", me.state.count);
       me.setState({
-        count: me.state.count + 1
+        count: me.state.count + 1,
       });
       console.log("第二次 setTimeout:", me.state.count);
     }, 0);
-    setTimeout(function() {
+    setTimeout(function () {
       batchedUpdates(() => {
         me.setState({
-          count: me.state.count + 1
+          count: me.state.count + 1,
         });
         console.log("第一次 batchedUpdates:", me.state.count);
         me.setState({
-          count: me.state.count + 1
+          count: me.state.count + 1,
         });
         console.log("第二次 batchedUpdates:", me.state.count);
       });

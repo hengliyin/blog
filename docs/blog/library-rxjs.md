@@ -72,28 +72,28 @@ Schedulers (调度器): 用来控制并发并且是中央集权的调度员，�
 
 ```javascript
 //第一步，创建一个可观察对象（也可以通过fromEvent...）
-var observable = Rx.Observable.create(function(observer) {
+var observable = Rx.Observable.create(function (observer) {
   observer.next("first");
-  setInterval(function() {
+  setInterval(function () {
     observer.next("5");
   }, 1000);
-  setTimeout(function() {
+  setTimeout(function () {
     throw new Error("错误");
   }, 3000);
-  setTimeout(function() {
+  setTimeout(function () {
     observer.complete("6");
   }, 6000);
 })
-  .map(e => e.bold()) // 使用操作符过滤观察流
+  .map((e) => e.bold()) // 使用操作符过滤观察流
   .observeOn(Rx.Scheduler.async); //让流变为异步
 
 var subject = new Rx.Subject();
 
 //增加两个监听函数
-var observer1 = e => {
+var observer1 = (e) => {
   console.log(e);
 };
-var observer2 = e => {
+var observer2 = (e) => {
   console.log("监听2");
 };
 
@@ -109,7 +109,7 @@ observable.subscribe(subject);
 console.log("waibu");
 
 //增加取消监听
-setTimeout(function() {
+setTimeout(function () {
   subscription1.unsubscribe();
   subscription2.unsubscribe();
 }, 1500);

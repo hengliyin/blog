@@ -28,9 +28,9 @@
 new Vue({
   data() {
     return {
-      message: "hello world"
+      message: "hello world",
     };
-  }
+  },
 });
 </script>
 ```
@@ -72,7 +72,7 @@ function defineReactive(obj, key, val) {
       val = newVal;
       // 修改数据时，通知页面重新渲染
       dep.notify();
-    }
+    },
   });
 }
 ```
@@ -253,7 +253,7 @@ export function createComponent(
   data: ?VNodeData,
   context: Component,
   children: ?Array<VNode>,
-  tag?: string
+  tag?: string,
 ): VNode | Array<VNode> | void {
   // $options._base 其实就是全局 Vue 构造函数，在初始化时 initGlobalAPI 中定义的：Vue.options._base = Vue
   const baseCtor = context.$options._base;

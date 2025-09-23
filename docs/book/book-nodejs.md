@@ -281,10 +281,10 @@ Streams 不是 Node.js 独有的概念。它们是几十年前在 Unix 操作系
 const fs = require("fs");
 const rs = fs.createReadStream("test.md");
 let data = "";
-rs.on("data", function(chunk) {
+rs.on("data", function (chunk) {
   data += chunk;
 });
-rs.on("end", function() {
+rs.on("end", function () {
   console.log(data);
 });
 ```
@@ -296,7 +296,7 @@ rs.on("end", function() {
 一般情况下是 Buffer，修改 data 事件的 eventHandler 来验证下。
 
 ```js
-rs.on("data", function(chunk) {
+rs.on("data", function (chunk) {
   console.log("chunk", Buffer.isBuffer(chunk)); // log true
   data += chunk;
 });
@@ -332,7 +332,7 @@ const EventEmitter = require("events");
 const observer = new EventEmitter();
 
 // 监听事件
-observer.on("topic", function() {
+observer.on("topic", function () {
   console.log("topic has changed");
 });
 
@@ -346,12 +346,12 @@ observer.emit("topic");
 
 ```js
 async.series([
-  function(cb) {
+  function (cb) {
     cb(null, "one");
   },
-  function(cb) {
+  function (cb) {
     cb(null, "two");
-  }
+  },
 ]);
 ```
 
@@ -362,8 +362,8 @@ thunk 函数的作用是将多参数替换成单参数。
 
 ```js
 function Thunk(fn) {
-  return function(...args) {
-    return function(callback) {
+  return function (...args) {
+    return function (callback) {
       return fn.call(this, ...args, callback);
     };
   };
@@ -398,16 +398,16 @@ generator 是一个生成器，会根据 yield 一步一步地生成数据。co 
 - co + generator
 
 ```js
-co(function*() {
+co(function* () {
   var result = yield Promise.resolve(true);
   return result;
 }).then(
-  function(value) {
+  function (value) {
     console.log("value:", value);
   },
-  function(err) {
+  function (err) {
     console.log("err:", err);
-  }
+  },
 );
 ```
 

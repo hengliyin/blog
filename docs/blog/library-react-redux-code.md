@@ -43,7 +43,7 @@ class Provider extends React.Component {
     const { store } = props;
     this.state = {
       storeState: store.getState(),
-      store
+      store,
     };
   }
 
@@ -66,7 +66,7 @@ class Provider extends React.Component {
     this.unsubscribe = store.subscribe(() => {
       const newStoreState = store.getState();
 
-      this.setState(providerState => {
+      this.setState((providerState) => {
         return { storeState: newStoreState };
       });
     });
@@ -95,7 +95,7 @@ Connect 也是通过 Context API，负责将 Store 数据传递到需要的组�
 import React from "react";
 import { ReactReduxContext } from "./Context";
 
-const connect = (mapStateToProps, mapDispatchToProps) => WrappedComponent => {
+const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
   class HOC extends React.Component {
     render() {
       return (
@@ -135,7 +135,7 @@ Compose 用来实现函数组合，是函数式编程中很重要的概念，可
 ```js
 function compose(...fns) {
   if (fns.length === 0) {
-    return a => a;
+    return (a) => a;
   }
   if (fns.length === 1) {
     return fns[0];
@@ -164,11 +164,11 @@ function createStore(reducer, initialState, middlewares) {
     _state: initialState,
     getState: () => {
       return store._state;
-    }
+    },
   };
 
   return {
-    store
+    store,
   };
 }
 ```
@@ -189,16 +189,16 @@ function createStore(reducer, initialState, middlewares) {
     _state: initialState,
     getState: () => {
       return store._state;
-    }
+    },
   };
 
-  const Provider = props => {
+  const Provider = (props) => {
     return <storeContext.Provider {...props} value={store._state} />;
   };
 
   return {
     store,
-    Provider
+    Provider,
   };
 }
 ```
@@ -224,14 +224,14 @@ function createStore(reducer, initialState, middlewares) {
     useContext: () => {
       return useContext(storeContext);
     },
-    dispatch: undefined
+    dispatch: undefined,
   };
 
-  const Provider = props => {
+  const Provider = (props) => {
     const [state, dispatch] = useReducer(reducer, store._state);
 
     // 实现异步操作，可以 dispatch 一个 function，类似 redux-chunk
-    store.dispatch = async action => {
+    store.dispatch = async (action) => {
       if (typeof action === "function") {
         await action(dispatch, state);
       } else {
@@ -247,7 +247,7 @@ function createStore(reducer, initialState, middlewares) {
 
   return {
     Provider,
-    store
+    store,
   };
 }
 ```
@@ -261,10 +261,10 @@ function createStore(reducer, initialState, middlewares) {
 这里用到了函数组合 Compose，将中间件集合组合在一起。
 
 ```js
-const Provider = props => {
+const Provider = (props) => {
   const [state, dispatch] = useReducer(reducer, store._state);
 
-  store.dispatch = async action => {
+  store.dispatch = async (action) => {
     if (typeof action === "function") {
       await action(dispatch, state);
     } else {
@@ -273,7 +273,7 @@ const Provider = props => {
   };
 
   // 整合中间件
-  var chain = middlewares.map(item => item(store));
+  var chain = middlewares.map((item) => item(store));
   var middlewaresFun = compose(...chain);
   store.dispatch = middlewaresFun(store.dispatch);
 
@@ -294,9 +294,9 @@ const Provider = props => {
 
 ```js
 function combineReducers(reducers) {
-  return function(state = {}, action) {
+  return function (state = {}, action) {
     let newState = {};
-    Object.keys(reducers).map(key => {
+    Object.keys(reducers).map((key) => {
       const reducer = reducers[key];
       newState[key] = reducer(state[key], action);
     });
@@ -323,7 +323,7 @@ function bindActionCreators(actionCreators, dispatch) {
 
   var actionCreatorKeys = Object.keys(actionCreators);
   var result = {};
-  actionCreatorKeys.map(key => {
+  actionCreatorKeys.map((key) => {
     result[key] = bindActionCreator(actionCreators[key], dispatch);
   });
   return result;

@@ -235,7 +235,7 @@ function prepareFreshStack(root, expirationTime) {
 function createWorkInProgress(
   current: Fiber,
   pendingProps: any,
-  expirationTime: ExpirationTime
+  expirationTime: ExpirationTime,
 ) {
   let workInProgress = current.alternate;
   if (workInProgress === null) {
@@ -243,7 +243,7 @@ function createWorkInProgress(
       current.tag,
       pendingProps,
       current.key,
-      current.mode
+      current.mode,
     );
     workInProgress.elementType = current.elementType;
     workInProgress.type = current.type;

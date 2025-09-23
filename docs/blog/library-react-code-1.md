@@ -53,15 +53,15 @@ function App() {
   return React.createElement(
     "div",
     {
-      id: "test"
+      id: "test",
     },
     React.createElement(Comp, null),
     React.createElement(
       "ul",
       null,
       React.createElement("li", null, "1"),
-      React.createElement("li", null, "2")
-    )
+      React.createElement("li", null, "2"),
+    ),
   );
 }
 ```
@@ -69,14 +69,14 @@ function App() {
 可以看到，经过 babel 编译后的代码，是将 jsx 转换成 React.createElement 的函数调用模式。我们再来看一下 React.createElement 在做什么？
 
 ```js
-const ReactElement = function(type, key, ref, self, source, owner, props) {
+const ReactElement = function (type, key, ref, self, source, owner, props) {
   const element = {
     $$typeof: REACT_ELEMENT_TYPE,
     type: type,
     key: key,
     ref: ref,
     props: props,
-    _owner: owner
+    _owner: owner,
   };
   return element;
 };
@@ -89,7 +89,7 @@ function createElement(type, config, children) {
     self,
     source,
     ReactCurrentOwner.current,
-    props
+    props,
   );
 }
 ```
@@ -108,8 +108,8 @@ const React = {
     forEach,
     count,
     toArray,
-    only
-  }
+    only,
+  },
 };
 ```
 
@@ -150,7 +150,7 @@ function getPooledTraverseContext(
   mapResult,
   keyPrefix,
   mapFunction,
-  mapContext
+  mapContext,
 ) {
   if (traverseContextPool.length) {
     // 复用对象
@@ -168,7 +168,7 @@ function getPooledTraverseContext(
       keyPrefix: keyPrefix,
       func: mapFunction,
       context: mapContext,
-      count: 0
+      count: 0,
     };
   }
 }

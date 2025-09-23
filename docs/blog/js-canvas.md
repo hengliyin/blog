@@ -40,7 +40,7 @@ let rows = 10,
   columns = 20,
   counter = 0;
 
-image.onload = function() {
+image.onload = function () {
   // 计算每一行，每一列的宽高
   boxWidth = image.width / columns;
   boxHeight = image.height / rows;
@@ -75,7 +75,7 @@ function animate() {
     x * boxWidth, // 从大图的 x 坐标位置开始画图
     y * boxHeight, // 从大图的 y 坐标位置开始画图
     boxWidth, // 从大图的 x 位置开始，画多宽（小碎片图像的宽）
-    boxHeight // 从大图的 y 位置开始，画多高（小碎片图像的高）
+    boxHeight, // 从大图的 y 位置开始，画多高（小碎片图像的高）
   );
   counter++;
   // 如果模块渲染了 90%，就让整个图片显示出来。
@@ -108,7 +108,7 @@ function animate() {
         columns = 20,
         counter = 0;
 
-      image.onload = function() {
+      image.onload = function () {
         boxWidth = image.width / columns;
         boxHeight = image.height / rows;
         requestAnimationFrame(animate);
@@ -126,7 +126,7 @@ function animate() {
           x * boxWidth, // 在画布上放置图像的 x 坐标位置
           y * boxHeight, // 在画布上放置图像的 y 坐标位置
           boxWidth, // 要使用的图像的宽度
-          boxHeight // 要使用的图像的高度
+          boxHeight, // 要使用的图像的高度
         );
         counter++;
         if (counter > columns * rows * 0.9) {

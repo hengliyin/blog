@@ -41,9 +41,7 @@ class DiyKoa extends Emitter {
       const ctx = this.createContext(req, res);
       const respond = this.responseBody(ctx);
       const onerror = this.onerror(ctx);
-      return fnMiddleware(ctx)
-        .then(respond)
-        .catch(onerror);
+      return fnMiddleware(ctx).then(respond).catch(onerror);
     };
   }
   listen(...args) {
@@ -88,7 +86,7 @@ class DiyKoa extends Emitter {
 ```js
 class DiyKoa extends Emitter {
   compose(middlewares) {
-    return async ctx => {
+    return async (ctx) => {
       let next = async () => {
         await Promise.resolve();
       };
@@ -127,7 +125,7 @@ class DiyKoa extends Emitter {
     };
   }
   onerror(ctx) {
-    return err => {
+    return (err) => {
       if (err.code === "ENOENT") {
         ctx.status = 404;
       } else {
@@ -158,7 +156,7 @@ module.exports = {
   },
   get url() {
     return this.req.url;
-  }
+  },
 };
 ```
 
@@ -182,7 +180,7 @@ module.exports = {
       throw new Error("statusCode 只能是数字");
     }
     this.res.statusCode = code;
-  }
+  },
 };
 ```
 
@@ -197,13 +195,13 @@ module.exports = {
 let proto = {};
 
 function delegateSet(property, name) {
-  proto.__defineSetter__(name, function(val) {
+  proto.__defineSetter__(name, function (val) {
     this[property][name] = val;
   });
 }
 
 function delegateGet(property, name) {
-  proto.__defineGetter__(name, function() {
+  proto.__defineGetter__(name, function () {
     return this[property][name];
   });
 }
@@ -215,17 +213,17 @@ let requestGet = ["query", "url"];
 let responseSet = ["body", "status"];
 let responseGet = responseSet;
 
-requestSet.forEach(item => {
+requestSet.forEach((item) => {
   delegateSet("request", item);
 });
-requestGet.forEach(item => {
+requestGet.forEach((item) => {
   delegateGet("request", item);
 });
 
-responseSet.forEach(item => {
+responseSet.forEach((item) => {
   delegateSet("response", item);
 });
-responseGet.forEach(item => {
+responseGet.forEach((item) => {
   delegateGet("response", item);
 });
 

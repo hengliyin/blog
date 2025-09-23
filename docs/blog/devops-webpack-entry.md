@@ -81,9 +81,9 @@ class SingleEntryPlugin {
       (compilation, { normalModuleFactory }) => {
         compilation.dependencyFactories.set(
           SingleEntryDependency,
-          normalModuleFactory
+          normalModuleFactory,
         );
-      }
+      },
     );
     compiler.hooks.make.tapAsync(
       "SingleEntryPlugin",
@@ -91,7 +91,7 @@ class SingleEntryPlugin {
         const { entry, name, context } = this;
         const dep = SingleEntryPlugin.createDependency(entry, name);
         compilation.addEntry(context, dep, name, callback);
-      }
+      },
     );
   }
   static createDependency(entry, name) {

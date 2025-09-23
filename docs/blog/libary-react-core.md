@@ -142,11 +142,11 @@ function App() {
 ```js
 //创建Fetcher
 var cached = {};
-const createFetcher = promiseTask => {
+const createFetcher = (promiseTask) => {
   let ref = cached;
   return () => {
     const task = promiseTask();
-    task.then(res => {
+    task.then((res) => {
       ref = res;
     });
     // 核心是抛出错误，给外层包裹的 suspense 组件捕获

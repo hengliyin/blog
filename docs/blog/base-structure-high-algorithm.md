@@ -78,7 +78,7 @@ function findAcrossMidSubArray(array, start, end) {
 
 console.warn(
   "分治法：",
-  findMaxSubArray([-11, 34, 37, 30, -42, 4, 16, 47, 36, 19], 0, 9)
+  findMaxSubArray([-11, 34, 37, 30, -42, 4, 16, 47, 36, 19], 0, 9),
 );
 ```
 
@@ -156,7 +156,7 @@ console.log("动态规划不用数组", iterFib(10));
 案例：老师分饼干，每个孩子只能得到一块饼干，但每个孩子想要的饼干大小不尽相同。目标是尽量让更多的孩子满意。 如孩子的要求是 [1, 3, 5, 4, 2]，饼干大小是[1, 1]，最多能让 1 个孩子满足。 如孩子的要求是 [10, 9, 8, 7, 6]，饼干大小是[7, 6, 5]，最多能让 2 个孩子满足。
 
 ```js
-var findContentChildren = function(children, cake) {
+var findContentChildren = function (children, cake) {
   var sortChildren = children.sort((a, b) => a - b);
   var sortCake = cake.sort((a, b) => a - b);
   var i = 0,

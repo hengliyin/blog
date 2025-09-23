@@ -18,7 +18,7 @@ iframe.postMessage("text message", "http://www.xxx.com");
 接收数据：
 
 ```js
-window.onmessage = function(event) {
+window.onmessage = function (event) {
   if (event.origin == "http://www.xxx.com") {
     //获取数据
     console.log(event.data);
@@ -44,7 +44,7 @@ window.onmessage = function(event) {
 只能在上述拖放事件中才能访问 dataTransfer 对象。
 
 ```js
-div.ondrag = function(event) {
+div.ondrag = function (event) {
   //setData第一个参数表示数据类型 url/text/..
   event.dataTransfer.setData("text", "some text");
   var text = event.dataTransfer.getData("text");
@@ -99,7 +99,7 @@ history.pushState({ name: "yhl" }, "new title", "yhl.html");
 执行 pushState()方法后，新的状态信息就会被加入历史状态栈，而浏览器状态栏也会变成新的相对 url。按下后退按钮，会触发 window 对象的 popState 事件。
 
 ```js
-window.onpopstate = function(event) {
+window.onpopstate = function (event) {
   var state = event.state;
   //......
 };

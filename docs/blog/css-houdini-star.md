@@ -98,7 +98,7 @@ registerLayout(
   "my-block",
   class extends Layout {
     // 在这里编写自定义layout
-  }
+  },
 );
 ```
 
@@ -164,8 +164,8 @@ console.log(new CSSUnitValue(5, "px"));
 elem.outputStyleMap.set(
   "transform",
   new CSSTransformValue([
-    new CSSTranslation(0, new CSSSimpleLength(100 - currentPercent, "%"), 0)
-  ])
+    new CSSTranslation(0, new CSSSimpleLength(100 - currentPercent, "%"), 0),
+  ]),
 );
 ```
 
@@ -275,7 +275,7 @@ class SkyStar {
         this.random(paintSize.width),
         this.random(paintSize.height),
         this.random(2) + 1,
-        this.random(2) + 1
+        this.random(2) + 1,
       );
     }
   }

@@ -41,9 +41,9 @@
 
 ```js
 // 示例1，单例 Person 类
-var Person = (function() {
+var Person = (function () {
   var instance;
-  return function(name) {
+  return function (name) {
     if (instance) {
       return instance;
     } else {
@@ -55,7 +55,7 @@ var Person = (function() {
 
 var p1 = new Person("张三");
 
-Person.prototype.say = function() {
+Person.prototype.say = function () {
   console.log("hello");
 };
 
@@ -66,7 +66,7 @@ console.log(p1.name, p2.name);
 // 示例2：操作页面dom
 function singlePattern(id) {
   var cacheDom;
-  return function() {
+  return function () {
     if (cacheDom) {
       return cacheDom;
     } else {
@@ -80,7 +80,7 @@ function singlePattern(id) {
 // 公用的单例函数，缓存函数执行结果。
 function getSingle(fn) {
   var result = null;
-  return function() {
+  return function () {
     if (!result) {
       result = fn.apply(this, arguments);
     }
@@ -129,13 +129,13 @@ function car() {
 
 // 建造者类，里面有专门负责各个部分的工人
 function carBuilder() {
-  this.wheelBuilder = function() {
+  this.wheelBuilder = function () {
     this.wheel = "轮子";
   };
-  this.engineBuilder = function() {
+  this.engineBuilder = function () {
     this.engine = "发动机";
   };
-  this.getCar = function() {
+  this.getCar = function () {
     var Car = new car();
     Car.wheel = this.wheel;
     Car.engine = this.engine;
@@ -145,7 +145,7 @@ function carBuilder() {
 
 // 指挥者类，指挥各个部分的工人工作
 function director() {
-  this.action = function(builder) {
+  this.action = function (builder) {
     builder.wheelBuilder();
     builder.engineBuilder();
   };
@@ -165,10 +165,10 @@ console.log(Car);
 
 ```js
 var someCar = {
-  drive: function() {
+  drive: function () {
     console.log("drive" + this.name);
   },
-  name: "马自达 3"
+  name: "马自达 3",
 };
 
 // 使用 Object.create 创建一个新车 x
@@ -272,7 +272,7 @@ turkeyAdapter.quack();
 </ul>
 <script>
   let ul = document.querySelector("#ul");
-  ul.addEventListener("click", event => {
+  ul.addEventListener("click", (event) => {
     console.log(event.target);
   });
 </script>
@@ -384,15 +384,15 @@ ball.init();
 
 ```js
 // folder 相关
-var Folder = function(name) {
+var Folder = function (name) {
   this.name = name;
   this.files = [];
 };
-Folder.prototype.add = function(file) {
+Folder.prototype.add = function (file) {
   this.files.push(file);
 };
 
-Folder.prototype.scan = function() {
+Folder.prototype.scan = function () {
   console.log("开始扫描文件夹: " + this.name);
   for (var i = 0, file, files = this.files; (file = files[i++]); ) {
     file.scan();
@@ -400,10 +400,10 @@ Folder.prototype.scan = function() {
 };
 
 // file 相关
-var File = function(name) {
+var File = function (name) {
   this.name = name;
 };
-File.prototype.scan = function() {
+File.prototype.scan = function () {
   console.log("开始扫描文件: " + this.name);
 };
 
@@ -436,10 +436,10 @@ folder.scan();
 假设有个内衣工厂，目前的产品有 50 种男式内衣和 50 种女士内衣，为了推销产品，工厂决定生产一些塑料模特来穿上他们的内衣拍成广告照片。正常情况下需要 50 个男模特和 50 个女模特，然后让他们每人分别穿上一件内衣来拍照。仔细想想其实没必要用这么多人，只用 1 个男模特和 1 个女模特，让他们分别传上不同的内衣拍照就行了。
 
 ```js
-var Model = function(sex) {
+var Model = function (sex) {
   this.sex = sex;
 };
-Model.prototype.takePhoto = function() {
+Model.prototype.takePhoto = function () {
   console.log("sex= " + this.sex + " underwear=" + this.underwear);
 };
 // 分别创建一个男模特对象和一个女模特对象:
@@ -548,7 +548,7 @@ Beverage.prototype.init 被称为模板方法的原因是，该方法中封装�
 又被称为发布——订阅者模式，定义了一种依赖关系，解决了主题对象与观察者之间功能的耦合。
 
 ```js
-var Observer = (function() {
+var Observer = (function () {
   var _message = {};
   return {
     subscribe(type, fn) {
@@ -562,7 +562,7 @@ var Observer = (function() {
       if (!_message[type]) {
         return;
       }
-      _message[type].forEach(item => {
+      _message[type].forEach((item) => {
         item.apply(this, args);
       });
     },
@@ -572,13 +572,13 @@ var Observer = (function() {
         return;
       }
       if (fn) {
-        _message[type].forEach(function(item, index) {
+        _message[type].forEach(function (item, index) {
           item === fn && _message[type].splice(index, 1);
         });
       } else {
         _message[type] = null;
       }
-    }
+    },
   };
 })();
 ```
@@ -591,50 +591,50 @@ var Observer = (function() {
 
 ```js
 // OffLightState:
-var OffLightState = function(light) {
+var OffLightState = function (light) {
   this.light = light;
 };
-OffLightState.prototype.buttonWasPressed = function() {
+OffLightState.prototype.buttonWasPressed = function () {
   console.log("弱光"); // offLightState 对应的行为
   this.light.setState(this.light.weakLightState);
 };
 // WeakLightState:
-var WeakLightState = function(light) {
+var WeakLightState = function (light) {
   this.light = light;
 };
-WeakLightState.prototype.buttonWasPressed = function() {
+WeakLightState.prototype.buttonWasPressed = function () {
   console.log("强光"); // weakLightState 对应的行为
   this.light.setState(this.light.strongLightState);
 };
 // StrongLightState:
-var StrongLightState = function(light) {
+var StrongLightState = function (light) {
   this.light = light;
 };
-StrongLightState.prototype.buttonWasPressed = function() {
+StrongLightState.prototype.buttonWasPressed = function () {
   console.log("关灯"); // strongLightState 对应的行为
   this.light.setState(this.light.offLightState); // 切换状态到 offLightState
 };
 
-var Light = function() {
+var Light = function () {
   this.offLightState = new OffLightState(this);
   this.weakLightState = new WeakLightState(this);
   this.strongLightState = new StrongLightState(this);
   this.button = null;
 };
 
-Light.prototype.init = function() {
+Light.prototype.init = function () {
   var button = document.createElement("button");
   var self = this;
 
   this.button = document.body.appendChild(button);
   this.button.innerHTML = "开关";
   this.setState(this.offLightState);
-  this.button.onclick = function() {
+  this.button.onclick = function () {
     self.currState.buttonWasPressed();
   };
 };
 // 设置当前状态
-Light.prototype.setState = function(newState) {
+Light.prototype.setState = function (newState) {
   this.currState = newState;
 };
 
@@ -656,18 +656,18 @@ light.init();
 
 ```js
 var strategies = {
-  S: function(salary) {
+  S: function (salary) {
     return salary * 4;
   },
-  A: function(salary) {
+  A: function (salary) {
     return salary * 3;
   },
-  B: function(salary) {
+  B: function (salary) {
     return salary * 2;
-  }
+  },
 };
 
-var calculateBonus = function(level, salary) {
+var calculateBonus = function (level, salary) {
   return strategies[level](salary);
 };
 console.log(calculateBonus("S", 20000)); // 输出:80000
@@ -691,7 +691,7 @@ console.log(calculateBonus("A", 10000)); // 输出:30000
 - stock，表示当前用于普通购买的手机库存数量，已经支付过 500 元或者 200 元定金的用户不受此限制。
 
 ```js
-var order500 = function(orderType, pay, stock) {
+var order500 = function (orderType, pay, stock) {
   if (orderType === 1 && pay === true) {
     console.log("500 元定金预购，得到 100 优惠券");
   } else {
@@ -700,7 +700,7 @@ var order500 = function(orderType, pay, stock) {
   }
 };
 
-var order200 = function(orderType, pay, stock) {
+var order200 = function (orderType, pay, stock) {
   if (orderType === 2 && pay === true) {
     console.log("200 元定金预购，得到 50 优惠券");
   } else {
@@ -709,7 +709,7 @@ var order200 = function(orderType, pay, stock) {
   }
 };
 
-var orderNormal = function(orderType, pay, stock) {
+var orderNormal = function (orderType, pay, stock) {
   if (stock > 0) {
     console.log("普通购买，无优惠券");
   } else {
@@ -718,15 +718,15 @@ var orderNormal = function(orderType, pay, stock) {
 };
 
 // 封装职责链
-var Chain = function(fn) {
+var Chain = function (fn) {
   this.fn = fn;
   this.successor = null;
 };
-Chain.prototype.setNextSuccessor = function(successor) {
+Chain.prototype.setNextSuccessor = function (successor) {
   return (this.successor = successor);
 };
 
-Chain.prototype.passRequest = function() {
+Chain.prototype.passRequest = function () {
   var ret = this.fn.apply(this, arguments);
   if (ret === "nextSuccessor") {
     return (
@@ -775,35 +775,35 @@ chainOrder500.passRequest(1, false, 0); // 输出:手机库存不足
   <script>
     // 定义一系列操作
     var Ryu = {
-      attack: function() {
+      attack: function () {
         console.log("攻击");
       },
-      defense: function() {
+      defense: function () {
         console.log("防御");
       },
-      jump: function() {
+      jump: function () {
         console.log("跳跃");
       },
-      crouch: function() {
+      crouch: function () {
         console.log("蹲下");
-      }
+      },
     };
 
     // 创建命令
-    var makeCommand = function(receiver, state) {
-      return function() {
+    var makeCommand = function (receiver, state) {
+      return function () {
         receiver[state]();
       };
     };
     var commands = {
-      "119": "jump", // W
-      "115": "crouch", // S
-      "97": "defense", // A
-      "100": "attack" // D
+      119: "jump", // W
+      115: "crouch", // S
+      97: "defense", // A
+      100: "attack", // D
     };
     // 保存命令的堆栈
     var commandStack = [];
-    document.onkeypress = function(ev) {
+    document.onkeypress = function (ev) {
       var keyCode = ev.keyCode;
       var command = makeCommand(Ryu, commands[keyCode]);
       if (command) {
@@ -813,7 +813,7 @@ chainOrder500.passRequest(1, false, 0); // 输出:手机库存不足
     };
 
     // 点击播放录像
-    document.getElementById("replay").onclick = function() {
+    document.getElementById("replay").onclick = function () {
       var command;
       // 从堆栈里依次取出命令并执行
       while ((command = commandStack.shift())) {
@@ -845,16 +845,16 @@ chainOrder500.passRequest(1, false, 0); // 输出:手机库存不足
 ```js
 // 访问者
 function Visitor() {
-  this.visit = function(concreteElement) {
+  this.visit = function (concreteElement) {
     concreteElement.doSomething();
   };
 }
 // 元素类
 function ConceteElement() {
-  this.doSomething = function() {
+  this.doSomething = function () {
     console.log("这是一个具体元素");
   };
-  this.accept = function(visitor) {
+  this.accept = function (visitor) {
     visitor.visit(this);
   };
 }
@@ -876,37 +876,37 @@ ele.accept(v);
 function Player(name, teamColor) {
   this.name = name; // 角色名字 this.teamColor = teamColor; // 队伍颜色 this.state = 'alive'; // 玩家生存状态
 }
-Player.prototype.win = function() {
+Player.prototype.win = function () {
   console.log(this.name + " won ");
 };
-Player.prototype.lose = function() {
+Player.prototype.lose = function () {
   console.log(this.name + " lost");
 };
 
 /*******************玩家死亡*****************/
-Player.prototype.die = function() {
+Player.prototype.die = function () {
   this.state = "dead";
   playerDirector.reciveMessage("playerDead", this);
 };
 
-var playerFactory = function(name, teamColor) {
+var playerFactory = function (name, teamColor) {
   var newPlayer = new Player(name, teamColor); // 创造一个新的玩家对象
   playerDirector.reciveMessage("addPlayer", newPlayer); // 给中介者发送消息，新增玩家
   return newPlayer;
 };
 
-var playerDirector = (function() {
+var playerDirector = (function () {
   var players = {}; // 保存所有玩家
   var operations = {}; // 中介者可以执行的操作
 
   /****************新增一个玩家***************************/
-  operations.addPlayer = function(player) {
+  operations.addPlayer = function (player) {
     var teamColor = player.teamColor; // 玩家的队伍颜色
     players[teamColor] = players[teamColor] || []; // 如果该颜色的玩家还没有成立队伍，则新成立一个队伍
     players[teamColor].push(player); // 添加玩家进队伍
   };
 
-  operations.playerDead = function(player) {
+  operations.playerDead = function (player) {
     var teamColor = player.teamColor,
       teamPlayers = players[teamColor];
     var all_dead = true;
@@ -933,12 +933,12 @@ var playerDirector = (function() {
     }
   };
 
-  var reciveMessage = function() {
+  var reciveMessage = function () {
     var message = Array.prototype.shift.call(arguments);
     operations[message].apply(this, arguments);
   };
   return {
-    reciveMessage: reciveMessage
+    reciveMessage: reciveMessage,
   };
 })();
 ```
@@ -952,16 +952,16 @@ var playerDirector = (function() {
 案例：备忘录模式在 js 中经常用于数据缓存. 比如一个分页控件, 从服务器获得某一页的数据后可以存入缓存。以后再翻回这一页的时候，可以直接使用缓存里的数据而无需再次请求服务器。
 
 ```js
-var Page = (function() {
+var Page = (function () {
   var page = 1,
     cache = {},
     data;
-  return function(page) {
+  return function (page) {
     if (cache[page]) {
       data = cache[page];
       render(data);
     } else {
-      Ajax.send("cgi.xx.com/xxx", function(data) {
+      Ajax.send("cgi.xx.com/xxx", function (data) {
         cache[page] = data;
         render(data);
       });
@@ -987,7 +987,7 @@ function each(ary, callback) {
 }
 
 // 使用迭代器遍历
-each([1, 2, 3], function(i, n) {
+each([1, 2, 3], function (i, n) {
   alert([i, n]);
 });
 ```
@@ -1000,7 +1000,7 @@ each([1, 2, 3], function(i, n) {
 
 ```js
 // xPath解释器
-var Interpreter = (function() {
+var Interpreter = (function () {
   // 获取兄弟元素名称
   function getSulingName(node) {
     if (node.previousSibling) {
@@ -1029,7 +1029,7 @@ var Interpreter = (function() {
       return "";
     }
   }
-  return function(node, wrap) {
+  return function (node, wrap) {
     var path = [],
       wrap = wrap || document;
     if (node == wrap) {
