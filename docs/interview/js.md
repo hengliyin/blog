@@ -134,7 +134,7 @@ Function.prototype.myBind = (context, ...rest) => {
 
 ## 8、用过 NodeJS 的 EventEmitter 模块吗，它是怎么实现功能的，步骤是什么
 
-类似于 [观察者模式](https://hengliyin.github.io/blog/js-observer.html)
+类似于 [观察者模式](https://hengli.xyz/blog/js-observer.html)
 
 ## 9、Fetch 和 Ajax 的比较
 

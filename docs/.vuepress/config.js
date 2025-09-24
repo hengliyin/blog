@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         text: "前端导航",
-        link: "https://hengliyin.github.io/front-end-navigation",
+        link: "https://hengli.xyz/front-end-navigation",
       },
     ],
     sidebar: {
