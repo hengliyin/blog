@@ -27,7 +27,7 @@
 
 ![双向绑定图](/blog/vue-mvvm.png)
 
-图中可以看到，双向数据绑定主要用到一下几点：
+图中可以看到，双向数据绑定主要用到以下几点：
 
 - 1.Object.defineProperty
 - 2.Observer
@@ -122,7 +122,7 @@ new Vue({
 - 更新（update）前后
 - 销毁（destory）前后
 
-![vue 生命周期](https://cn.vuejs.org/images/lifecycle.png)
+![vue 生命周期](https://cn.vuejs.org/assets/lifecycle_zh-CN.W0MNXI0C.png)
 
 ## Vue 运行时优化
 
