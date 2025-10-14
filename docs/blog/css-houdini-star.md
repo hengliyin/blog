@@ -51,7 +51,7 @@ body {
 
 ### Box Tree API
 
-大家都知道在 DOM tree 中的每个元素都有一个 Box Modal，而在浏览器解析过程中，还会将其拆分成 fragments，至于什么是 fragments？
+大家都知道在 DOM tree 中的每个元素都有一个 Box Model，而在浏览器解析过程中，还会将其拆分成 fragments，至于什么是 fragments？
 
 ```html
 <style>
